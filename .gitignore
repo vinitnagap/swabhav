@@ -35,6 +35,7 @@ local.properties
 
 # PDT-specific (PHP Development Tools)
 .buildpath
+.pdf
 
 # sbteclipse plugin
 .target
