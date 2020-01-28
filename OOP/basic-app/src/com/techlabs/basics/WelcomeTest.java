@@ -18,23 +18,23 @@ public class WelcomeTest {
 		printInfo("xyz");
 	}
 
-	public static void printInfo(int x) {
+	private static void printInfo(int x) {
 		System.out.println(x);
 	}
 
-	public static void printInfo(double d) {
+	private static void printInfo(double d) {
 		System.out.println(d);
 	}
 
-	public static void printInfo(char t) {
+	private static void printInfo(char t) {
 		System.out.println(t);
 	}
 
-	public static void printInfo(float f) {
+	private static void printInfo(float f) {
 		System.out.println(f);
 	}
 
-	public static void printInfo(String s) {
+	private static void printInfo(String s) {
 		System.out.println(s);
 	}
 }
