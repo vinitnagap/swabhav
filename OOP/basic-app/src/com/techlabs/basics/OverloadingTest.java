@@ -1,8 +1,6 @@
 package com.techlabs.basics;
 
-import java.awt.peer.SystemTrayPeer;
-
-public class WelcomeTest {
+public class OverloadingTest {
 
 	public static void main(String[] args) {
 		System.out.println("Hello");
@@ -11,6 +9,7 @@ public class WelcomeTest {
 		System.out.println('x');
 		System.out.println("xyz");
 		System.out.println(24.445);
+		
 		printInfo(20);
 		printInfo(50.02);
 		printInfo('t');
