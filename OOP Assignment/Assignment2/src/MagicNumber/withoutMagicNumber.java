@@ -1,6 +1,6 @@
 package magicnumber;
 
-public class withoutMagicNumber {
+public class WithoutMagicNumber {
 
 	final static public String IP = "127.0.0.1";
 	final static public int PORT = 8080;
@@ -16,7 +16,7 @@ public class withoutMagicNumber {
 
 	public static void main(String[] args) {
 
-		new withoutMagicNumber().serve(IP, PORT, USERNAME, TIMEOUT);
+		new WithoutMagicNumber().serve(IP, PORT, USERNAME, TIMEOUT);
 	}
 
 }

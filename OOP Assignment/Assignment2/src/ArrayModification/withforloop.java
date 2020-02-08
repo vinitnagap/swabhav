@@ -1,4 +1,4 @@
-package ArrayModification;
+package arraymodification;
 
 public class WithForLoop {
 

@@ -1,6 +1,6 @@
-package StringImmutable;
+package stringimmutable;
 
-public class explanation {
+public class StringImmutable {
 
 	public static void main(String args[]) {
 		String s = "Sachin";

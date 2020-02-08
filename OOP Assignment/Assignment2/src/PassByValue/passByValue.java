@@ -1,6 +1,6 @@
-package PassByValue;
+package passbyvalue;
 
-public class passByValue {
+public class PassByValue {
 
 	public static void main(String[] args) {
 		int x = 5;
