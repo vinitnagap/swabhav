@@ -9,9 +9,9 @@ public class explanation {
 								// objects
 
 		String s1 = "Sachin";
-		String s2 = s1.concat(" Tendulkar");
+		String s2=s1.concat(" Tendulkar");// concat() method appends the string at the end
 		System.out.println(s2);
-
+		
 	}
 
 }

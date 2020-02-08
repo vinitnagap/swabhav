@@ -1,6 +1,6 @@
-package DifferenceOfForLoop;
+package differenceofforloop;
 
-public class difference {
+public class Difference {
 
 	public static void main(String[] args) {
 

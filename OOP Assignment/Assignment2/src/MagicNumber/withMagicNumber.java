@@ -1,6 +1,6 @@
-package MagicNumber;
+package magicnumber;
 
-public class withMagicNumber {
+public class WithMagicNumber {
 
 	final static public String IP = "127.0.0.1";
 	final static public String USERNAME = "vinit";
@@ -15,7 +15,7 @@ public class withMagicNumber {
 	public static void main(String[] args) {
 		int internal_port = 8080; // Magic number
 
-		new withMagicNumber().serve(IP, internal_port, USERNAME, TIMEOUT);
+		new WithMagicNumber().serve(IP, internal_port, USERNAME, TIMEOUT);
 	}
 
 }

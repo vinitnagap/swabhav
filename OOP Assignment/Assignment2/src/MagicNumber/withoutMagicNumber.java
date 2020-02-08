@@ -1,4 +1,4 @@
-package MagicNumber;
+package magicnumber;
 
 public class withoutMagicNumber {
 

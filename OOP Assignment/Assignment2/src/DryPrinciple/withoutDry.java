@@ -1,6 +1,6 @@
-package DryPrinciple;
+package dryprinciple;
 
-public class withoutDry {
+public class WithoutDry {
 
 	public static void main(String[] args) {
 		Mechanic1 m = new Mechanic1();

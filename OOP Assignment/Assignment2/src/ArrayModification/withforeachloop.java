@@ -1,6 +1,6 @@
 package ArrayModification;
 
-public class withforeachloop {
+public class WithForeachLoop {
 
 	public static void main(String[] args) {
 

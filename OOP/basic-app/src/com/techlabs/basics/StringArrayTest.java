@@ -2,10 +2,13 @@ package com.techlabs.basics;
 
 public class StringArrayTest {
 
-	public static void main(String[] args) {
-		String[] names = { "Vinit", "Prasad", "Jay", "Tanmay", "Tejashree",
-				"Pawan", "Tejal", "Murtaza", "Pawan" };
-
+	public static void main(String[] names) {
+		/*String[] names = { "Vinit", "Prasad", "Jay", "Tanmay", "Tejashree",
+				"Pawan", "Tejal", "Murtaza", "Pawan" };    */
+		if(names.length==0){
+			System.out.println("No Names Inserted");
+			return;
+		}
 		System.out.println("Normal for loop");
 		for (int i = 0; i < names.length; i++) {
 			System.out.println(names[i]);
@@ -33,6 +36,10 @@ public class StringArrayTest {
 			}
 		}
 		System.out.println("Maximum="+names[temp]);
+		
+	//	for(int i=1;i<names.length;i++){
+	//		System.out.println(names.replace('o', 'T'));
+	//	}
 	
 	}
 	
