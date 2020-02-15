@@ -1,4 +1,4 @@
-package enumeration;
+package com.techlabs.enumeration;
 
 enum Color {
 	RED, GREEN, BLUE

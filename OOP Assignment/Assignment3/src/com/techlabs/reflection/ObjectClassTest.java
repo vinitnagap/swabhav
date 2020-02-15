@@ -1,11 +1,11 @@
-package reflection;
+package com.techlabs.reflection;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
-public class SystemClassTest {
+public class ObjectClassTest {
 	public static void main(String[] args) {
-		Class<?> reflectionclass = System.class;
+		Class<?> reflectionclass = Object.class;
 		int methodcount = 0, gettercount = 0, settercount = 0, constructorcount = 0;
 		String classname = reflectionclass.getName();
 		System.out.println("Name of class is : " + classname);

@@ -1,4 +1,4 @@
-package stringimmutable;
+package com.techlabs.stringimmutable;
 
 public class StringImmutable {
 

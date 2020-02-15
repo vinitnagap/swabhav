@@ -1,4 +1,4 @@
-package objectcalisthenics;
+package com.techlabs.objectcalisthenics;
 
 public class WithRule1Test {
 	// private int count;

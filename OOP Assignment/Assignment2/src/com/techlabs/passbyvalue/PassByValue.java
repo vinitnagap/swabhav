@@ -1,4 +1,4 @@
-package passbyvalue;
+package com.techlabs.passbyvalue;
 
 public class PassByValue {
 

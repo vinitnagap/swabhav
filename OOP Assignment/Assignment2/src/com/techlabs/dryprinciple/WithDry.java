@@ -1,4 +1,4 @@
-package dryprinciple;
+package com.techlabs.dryprinciple;
 
 public class WithDry {
 

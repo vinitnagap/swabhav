@@ -1,4 +1,4 @@
-package wrapperclass;
+package com.techlabs.wrapperclass;
 
 public class UnboxingTest {
 

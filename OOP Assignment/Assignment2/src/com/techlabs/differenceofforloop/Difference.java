@@ -1,4 +1,4 @@
-package differenceofforloop;
+package com.techlabs.differenceofforloop;
 
 public class Difference {
 
