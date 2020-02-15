@@ -1,4 +1,4 @@
-package arraymodification;
+package com.techlabs.arraymodification;
 
 public class WithForLoop {
 
