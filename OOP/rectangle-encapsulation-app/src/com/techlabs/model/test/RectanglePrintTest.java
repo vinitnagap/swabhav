@@ -21,6 +21,6 @@ public class RectanglePrintTest {
 		System.out.println("Width = " + r.readWidth());
 		System.out.println("Height = " + r.readHeight());
 		int Area = r.readWidth() * r.readHeight();
-		System.out.println("Area = "+Area);
+		System.out.println("Area = " + Area);
 	}
 }

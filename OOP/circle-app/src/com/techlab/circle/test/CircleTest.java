@@ -10,26 +10,36 @@ public class CircleTest {
 		circles[2] = new Circle();
 		circles[3] = new Circle();
 		circles[4] = new Circle();
-		circles[0].setRadius(20f);
-		circles[1].setRadius(10f);
-		circles[2].setRadius(30f);
-		circles[3].setRadius(40f);
-		circles[4].setRadius(50f);
-		printInfo(circles);
-		Circle big = findLargestCircle(circles);
-
-		System.out.println("Large circle radius = " + big);
 		
+		circles[0].setRadius(4.2f);
+		circles[1].setRadius(2.3f);
+		circles[2].setRadius(1.3f);
+		circles[3].setRadius(4.6f);
+		circles[4].setRadius(5.9f);
+		
+		printInfo(circles);
+		
+		Circle big = findLargestCircle(circles);
+		System.out.println("Large circle = " + big);
+
 		Circle small = findSmallestCircle(circles);
-		System.out.println("Smallest circle radius = "+small);
+		System.out.println("Smallest circle = " + small);
+		
+		System.out.println(findLargestCircle(circles).getRadius());
+		printInfo(findSmallestCircle(circles));
 	}
 
 	public static void printInfo(Circle[] circles) {
 		for (Circle cir : circles) {
-			System.out.println("Radius = " + cir.getRadius());
-			System.out.println("Area = " + cir.calculateArea());
-			System.out.println("Perimeter = " + cir.calculatePerimeter());
+			printInfo(cir);
+
 		}
+	}
+
+	public static void printInfo(Circle c) {
+		System.out.println("Radius = " + c.getRadius());
+		System.out.println("Area = " + c.calculateArea());
+		System.out.println("Perimeter = " + c.calculatePerimeter());
 	}
 
 	public static Circle findLargestCircle(Circle[] circles) {

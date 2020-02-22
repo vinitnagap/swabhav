@@ -10,7 +10,7 @@ public class RectangleTest {
 		rect.changeHeight(10);
 		System.out.println("Width = " + rect.readWidth());
 		System.out.println("Height = " + rect.readHeight());
-		
+
 		rect.changeWidth(-20);
 		rect.changeHeight(120);
 		System.out.println("Width = " + rect.readWidth());
