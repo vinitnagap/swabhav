@@ -13,7 +13,7 @@ class DrumKit {
 	}
 }
 
-public class Question1 {
+public class Test {
 	public static void main(String[] args) {
 		DrumKit d = new DrumKit();
 		d.playSnare();

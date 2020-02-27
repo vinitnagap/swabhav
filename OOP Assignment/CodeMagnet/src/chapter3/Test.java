@@ -1,6 +1,6 @@
 package chapter3;
 
-public class Question1 {
+public class Test {
 	public static void main(String[] args) {
 		int[] index = new int[4];
 		index[0] = 1;
