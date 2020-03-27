@@ -4,7 +4,7 @@ public class Student {
 	private int id;
 	private String name;
 	private double cgpa;
-	public static int count = 0;
+	private static int count = 0;
 
 	public Student(int id, String name, double cgpa) {
 		count = count + 1;
