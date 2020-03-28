@@ -13,6 +13,8 @@ public class StudentTestCase1 {
 		Student s3 = new Student(103, "lmno", 8.0f);
 		System.out.println(s1.getStudentCount());
 
+		System.out.println(Student.headCount());
+
 	}
 
 	/*

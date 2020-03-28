@@ -23,6 +23,11 @@ public class Student {
 		this(id, name, 7.0f);
 	}
 
+	public static int headCount() {
+		return count;
+
+	}
+
 	public int getId() {
 		return id;
 	}
