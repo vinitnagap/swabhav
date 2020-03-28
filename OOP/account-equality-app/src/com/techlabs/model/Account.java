@@ -51,4 +51,11 @@ public class Account {
 		return str;
 	}
 
+	public boolean equals(Account a) {
+		if (this.name == a.name && this.accno == a.accno
+				&& this.balance == a.balance)
+			return true;
+		return false;
+	}
+
 }
