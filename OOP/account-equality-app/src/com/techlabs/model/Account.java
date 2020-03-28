@@ -2,23 +2,24 @@ package com.techlabs.model;
 
 public class Account {
 
+	private int accno;
+	private String name;
 	private double balance;
 	private static int MINIMUM_BALANCE;
-	private static int totalNoOfTransactions;
 
-	static {
-		totalNoOfTransactions = 0;
+	public Account(int accno, String name, double balance) {
+		this.accno = accno;
+		this.name = name;
+		this.balance = balance;
 	}
 
 	public void deposit(double amt) {
 		balance = balance + amt;
-		totalNoOfTransactions++;
 	}
 
 	public void withdraw(double amt) {
 		if (balance - amt > MINIMUM_BALANCE) {
 			balance = balance - amt;
-			totalNoOfTransactions++;
 		}
 	}
 
@@ -34,7 +35,20 @@ public class Account {
 		return balance;
 	}
 
-	public static int getTotalTransations() {
-		return totalNoOfTransactions;
+	public String getName() {
+		return name;
 	}
+
+	public int getAccNo() {
+		return accno;
+	}
+
+	@Override
+	public String toString() {
+		String str = super.toString() + "\naccno: " + accno + "\nname: " + name
+				+ "\nbalance: " + balance;
+
+		return str;
+	}
+
 }
