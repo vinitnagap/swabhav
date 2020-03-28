@@ -2,7 +2,7 @@ package com.techlabs.model.test;
 
 import com.techlabs.model.*;
 
-public class StudentTest {
+public class StudentTestCase3 {
 	public static void main(String[] args) {
 		Student s1 = new Student(101, "abc");
 		System.out.println(s1.getStudentCount());
@@ -10,7 +10,7 @@ public class StudentTest {
 		Student s2 = new Student(102, "xyz");
 		System.out.println(s2.getStudentCount());
 
-		Student s3 = new Student(103, "lmno", 8.0);
+		Student s3 = new Student(103, "lmno", 8.0f);
 		System.out.println(s3.getStudentCount());
 
 	}
