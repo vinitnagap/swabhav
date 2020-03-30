@@ -51,9 +51,11 @@ public class Account {
 		return str;
 	}
 
-	public boolean equals(Account a) {
-		if (this.name == a.name && this.accno == a.accno
-				&& this.balance == a.balance)
+	@Override
+	public boolean equals(Object a) {
+		Account account = (Account) a;
+		if (this.name == account.name && this.accno == account.accno
+				&& this.balance == account.balance)
 			return true;
 		return false;
 	}
