@@ -8,22 +8,21 @@ import com.techlabs.model.Account;
 
 public class DeserializeArrayTest {
 	public static void main(String[] args) {
-		Account[] account = new Account[3];
+		Account[] accounts = new Account[3];
 		String filename = "file1.data";
 
 		try {
 
 			FileInputStream file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file);
-			account[0] = (Account) in.readObject();
-			account[1] = (Account) in.readObject();
-			account[2] = (Account) in.readObject();
+			accounts = (Account[])in.readObject();
+
 			in.close();
 			file.close();
 
 			System.out.println("Object has been deserialized ");
-			for (Account accounts : account) {
-				printInfo(accounts);
+			for (Account account : accounts) {
+				printInfo(account);
 
 			}
 
