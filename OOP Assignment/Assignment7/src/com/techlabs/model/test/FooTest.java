@@ -18,8 +18,10 @@ public class FooTest {
 			InvocationTargetException {
 
 		Method[] methods = className.getDeclaredMethods();
+		int count = 0;
 		for (Method method : methods) {
 			if (method.isAnnotationPresent(UnitTestCase.class)) {
+				count++;
 				if ((boolean) method.invoke(obj)) {
 					System.out.println(method.getName() + " is passing case");
 				} else
@@ -28,6 +30,7 @@ public class FooTest {
 				System.out.println(method.getName() + " is not a testcase");
 			}
 		}
+		System.out.println("No. of Test cases are " + count);
 	}
 
 }
