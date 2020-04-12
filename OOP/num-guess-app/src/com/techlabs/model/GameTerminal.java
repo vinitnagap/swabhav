@@ -27,7 +27,7 @@ public class GameTerminal {
 
 				System.out.println("Success \nNumber of guesses made : "
 						+ newgame.getGuessMade());
-				System.out.println("Score = " + newgame.getScore()
+				System.out.println("Score = " + newgame.calculateScore()
 						+ "\t\t Status :Has Result");
 				checkUserAnswer();
 				newgame.generateRandomn();
