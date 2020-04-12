@@ -4,30 +4,35 @@ import java.util.Scanner;
 
 public class GameTerminal {
 	private String choice = "play";
-	private int result;
+	private String result;
 
-	public void startGame() {
+	public void playGame() {
 		Game newgame = new Game();
 		newgame.generateRandomn();
+		System.out.println(" \t \t Status:Not Started");
 		do {
 			System.out.println("Guess the number");
 			Scanner sc = new Scanner(System.in);
-			newgame.guessNo(sc.nextInt());
-
-			result = newgame.checkGuessedNo();
+			int no = sc.nextInt();
+			result = newgame.checkGuessedNo(no);
 			switch (result) {
-			case 1:
-				System.out.println("Sorry, too high");
+			case "HIGH":
+				System.out.println("Sorry, Too High \t\t Status:In Progress");
 				break;
-			case 2:
-				System.out.println("Sorry, too low");
+			case "LOW":
+				System.out.println("Sorry, Too Low \t\t Status:In Progress");
 				break;
-			case 3:
+
+			case "SUCCESS":
+
 				System.out.println("Success \nNumber of guesses made : "
 						+ newgame.getGuessMade());
+				System.out.println("Score = " + newgame.getScore()
+						+ "\t\t Status :Has Result");
 				checkUserAnswer();
 				newgame.generateRandomn();
 				newgame.resetGuessMade();
+				break;
 
 			}
 
