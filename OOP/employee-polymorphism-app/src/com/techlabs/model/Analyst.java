@@ -1,19 +1,25 @@
 package com.techlabs.model;
 
 public class Analyst extends Employee {
+	
+	private static final double PERKS = 0.40;
 
 	public Analyst(String name, int id, GenderType gender, double basicSalary) {
 		super(name, id, gender, basicSalary);
+		role="Analyst";
 	}
 
 	@Override
 	public double calculateNetSalary() {
-		/*
-		 * System.out.println("Basic Salary = " + basicSalary);
-		 * System.out.println("Perks = " + 0.3 * basicSalary);
-		 */
-		return (1.3 * basicSalary);
-
+		return (((PERKS*basicSalary)+basicSalary)*12);
 	}
+
+	@Override
+	protected String[] calculateAllowances() {
+		String[] allowances = {"Perks is " + (PERKS * basicSalary)};
+
+		return allowances;
+	}
+
 
 }

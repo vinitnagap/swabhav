@@ -10,13 +10,16 @@ public class Test {
 
 	public static void main(String args[]) throws ParseException, IOException {
 		Account accounts[] = new Account[5];
-		accounts[0] = new SavingAccount(10, "abc", 15000, "01/23/2019", "01/01/1976");
-		accounts[1] = new SavingAccount(20, "xyz", 32000, "01/01/2020", "10/01/1998");
+		accounts[0] = new SavingAccount(10, "abc", 15000, "01/23/2019",
+				"01/01/1976");
+		accounts[1] = new SavingAccount(20, "xyz", 32000, "01/01/2020",
+				"10/01/1998");
 		accounts[2] = new CurrentAccount(30, "pqr", 55000, "01/16/2016",
 				"03/26/1995");
 		accounts[3] = new CurrentAccount(40, "mno", 25000, "12/25/2015",
 				"09/10/1998");
-		accounts[4] = new SavingAccount(50, "qwe", 5000, "12/13/2020", "31/12/1956");
+		accounts[4] = new SavingAccount(50, "qwe", 5000, "12/13/2020",
+				"31/12/1956");
 
 		printInfo(findRichestAccountHolder(accounts));
 		printInfo(findYoungAccountHolders(accounts, 23));
@@ -50,8 +53,10 @@ public class Test {
 		}
 		return richestAcc;
 	}
+	
+	//private static int getCountOfYoungAccHolders()
 
-	public static Account[] findYoungAccountHolders(Account[] acc, int age) {
+	private static Account[] findYoungAccountHolders(Account[] acc, int age) {
 		Account youngAcc[] = new Account[5];
 		for (int i = 0; i < acc.length; i++) {
 			if (age > acc[i].getAge()) {

@@ -8,7 +8,7 @@ public class GameTerminal {
 
 	public void playGame() {
 		Game newgame = new Game();
-		newgame.generateRandomn();
+		newgame.generateRandomNo();
 		System.out.println(" \t \t Status:Not Started");
 		do {
 			System.out.println("Guess the number");
@@ -30,7 +30,7 @@ public class GameTerminal {
 				System.out.println("Score = " + newgame.calculateScore()
 						+ "\t\t Status :Has Result");
 				checkUserAnswer();
-				newgame.generateRandomn();
+				newgame.generateRandomNo();
 				newgame.resetGuessMade();
 				break;
 

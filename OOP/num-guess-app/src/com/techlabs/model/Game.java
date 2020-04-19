@@ -3,23 +3,23 @@ package com.techlabs.model;
 import java.util.Random;
 
 public class Game {
-	private int randomno;
+	private int randomNo;
 	private int guesscount = 0;
 	private int score = 100;
 
-	public void generateRandomn() {
+	public void generateRandomNo() {
 		Random random = new Random();
-		randomno = random.nextInt(101);
+		randomNo = random.nextInt(101);
 
 	}
 
 	public String checkGuessedNo(int guessno) {
-		if (guessno > randomno) {
+		if (guessno > randomNo) {
 
 			guesscount++;
 			score = score - 10;
 			return "HIGH";
-		} else if (guessno < randomno) {
+		} else if (guessno < randomNo) {
 
 			guesscount++;
 			score = score - 10;
@@ -45,4 +45,7 @@ public class Game {
 		return score;
 	}
 
+	public int getRandomNo() {
+		return randomNo;
+	}
 }
