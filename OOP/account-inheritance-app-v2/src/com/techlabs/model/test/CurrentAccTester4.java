@@ -9,7 +9,7 @@ import org.junit.Test;
 import com.techlabs.model.Account;
 import com.techlabs.model.CurrentAccount;
 
-public class CATester4 {
+public class CurrentAccTester4 {
 
 	@Test
 	public void test_accountTypeTester() throws ParseException {

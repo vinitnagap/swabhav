@@ -7,7 +7,7 @@ import java.text.ParseException;
 import org.junit.Test;
 import com.techlabs.model.*;
 
-public class SATester1 {
+public class SavingAccTester1 {
 
 	@SuppressWarnings("deprecation")
 	@Test

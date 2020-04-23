@@ -22,11 +22,12 @@ public class Test {
 				"31/12/1956");
 
 		printInfo(findRichestAccountHolder(accounts));
-		printInfo(findYoungAccountHolders(accounts, 23));
+		int countOfYoungAccHolders = getCountOfYoungAccHolders(accounts);
+		printInfo(findYoungAccountHolders(accounts, countOfYoungAccHolders));
 		writeToCsv(accounts);
 	}
 
-	public static void printInfo(Account[] acc) {
+	private static void printInfo(Account[] acc) {
 
 		for (int i = 0; i < acc.length; i++) {
 			if (acc[i] != null) {
@@ -36,13 +37,13 @@ public class Test {
 
 	}
 
-	public static void printInfo(Account acc) {
+	private static void printInfo(Account acc) {
 		System.out.println("Acc No.\tName\tBalanace\tAge");
 		System.out.println(acc.getAccno() + "\t" + acc.getName() + "\t"
 				+ acc.getBalance() + "\t\t" + acc.getAge());
 	}
 
-	public static Account findRichestAccountHolder(Account[] acc) {
+	private static Account findRichestAccountHolder(Account[] acc) {
 		Account richestAcc = acc[0];
 
 		for (int i = 0; i < acc.length; i++) {
@@ -53,13 +54,21 @@ public class Test {
 		}
 		return richestAcc;
 	}
-	
-	//private static int getCountOfYoungAccHolders()
 
-	private static Account[] findYoungAccountHolders(Account[] acc, int age) {
+	private static int getCountOfYoungAccHolders(Account[] accounts) {
+		int index = 0;
+		for (int i = 0; i < accounts.length; i++) {
+			if (accounts[i].getAge() < 30) {
+				index++;
+			}
+		}
+		return index;
+	}
+
+	private static Account[] findYoungAccountHolders(Account[] acc, int index) {
 		Account youngAcc[] = new Account[5];
 		for (int i = 0; i < acc.length; i++) {
-			if (age > acc[i].getAge()) {
+			if (30 > acc[i].getAge()) {
 				youngAcc[i] = acc[i];
 			}
 
@@ -68,7 +77,7 @@ public class Test {
 
 	}
 
-	public static void writeToCsv(Account[] acc) throws IOException {
+	private static void writeToCsv(Account[] acc) throws IOException {
 		FileWriter fw = new FileWriter("BankAccountDetails.csv");
 		fw.write("Type,Accno,Name,Balance,Creation Date,Age ");
 		fw.write('\n');

@@ -9,7 +9,7 @@ import org.junit.Test;
 import com.techlabs.model.Account;
 import com.techlabs.model.SavingAccount;
 
-public class SATester3 {
+public class SavingAccTester3 {
 	@Test
 	public void test_accountNameTester() throws ParseException{
 		Account account = new SavingAccount(10, "abc", 15000, "01/23/2019",
