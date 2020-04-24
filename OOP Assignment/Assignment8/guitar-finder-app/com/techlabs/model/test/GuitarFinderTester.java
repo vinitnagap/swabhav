@@ -1,11 +1,7 @@
 package com.techlabs.model.test;
 
-import static org.junit.Assert.*;
-
-import java.util.Iterator;
-import java.util.List;
-
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import com.techlabs.model.Builder;
 import com.techlabs.model.Guitar;
@@ -16,36 +12,66 @@ import com.techlabs.model.Wood;
 
 public class GuitarFinderTester {
 
-	@Test
-	public void test() {
-		Inventory inventory = new Inventory();
-		initializeInventory(inventory);
+	Inventory inventory = new Inventory();
+	boolean expected = true, actual = false;
 
-		GuitarSpec whatRamLikes = new GuitarSpec(Builder.FENDER,
-				"Stratocastor", Type.ELECTRIC, 18, Wood.ALDER, Wood.ALDER);
-		List matchingGuitars = (List) (inventory.search(whatRamLikes));
-		if (!matchingGuitars.isEmpty()) {
-			System.out.println("Ram, you might like this guitars:");
-
-			for (Iterator i = matchingGuitars.iterator(); i.hasNext();) {
-				Guitar guitar = (Guitar) i.next();
-				GuitarSpec spec = guitar.getSpec();
-				System.out.println(spec.getBuilder() + " " + spec.getModel()
-						+ " " + spec.getType() + " guitar\n"
-						+ spec.getBackWood() + " back and sides,\n"
-						+ spec.getTopWood() + " top\nYou have it for only Rs."
-						+ guitar.getPrice() + "\n");
-
-			}
-		} else {
-			System.out.println("Sorry, not found");
-
-		}
+	public GuitarSpec setup() {
+		inventory.addGuitar("45AB", 25000, new GuitarSpec(Builder.FENDER,
+				"Stratocastor", Type.ELECTRIC, 24, Wood.ALDER, Wood.ALDER));
+		Guitar whatRamLikes = inventory.getGuitar("45AB");
+		GuitarSpec guitar = whatRamLikes.getSpec();
+		return guitar;
 	}
 
-	private static void initializeInventory(Inventory inventory) {
-		inventory.addGuitar("12EW", 25000, new GuitarSpec(Builder.FENDER,
-				"Stratocastor", Type.ELECTRIC, 18, Wood.ALDER, Wood.ALDER));
+	@Test
+	public void test_checkNumberOfString_ForWhatRamLikes() {
+		GuitarSpec guitar = setup();
+		if (guitar.getNumStrings() == 24) {
+			actual = true;
+		}
+		assertEquals(expected, actual);
+
+	}
+
+	@Test
+	public void test_checkBuilderType_Fender_ForWhatRamLikes() {
+
+		GuitarSpec guitar = setup();
+		if (guitar.getBuilder() == Builder.FENDER) {
+			actual = true;
+		}
+		assertEquals(expected, actual);
+
+	}
+
+	public void test_checkBackWood_Alder_ForWhatRamLikes() {
+
+		GuitarSpec guitar = setup();
+		if (guitar.getBackWood() == Wood.ALDER) {
+			actual = true;
+		}
+		assertEquals(expected, actual);
+
+	}
+
+	public void test_checkTopWood_Alder_ForWhatRamLikes() {
+
+		GuitarSpec guitar = setup();
+		if (guitar.getTopWood() == Wood.ALDER) {
+			actual = true;
+		}
+		assertEquals(expected, actual);
+
+	}
+
+	public void test_checkModel_Stratocastor_ForWhatRamLikes() {
+
+		GuitarSpec guitar = setup();
+		if (guitar.getModel() == "Stratocastor") {
+			actual = true;
+		}
+		assertEquals(expected, actual);
+
 	}
 
 }
