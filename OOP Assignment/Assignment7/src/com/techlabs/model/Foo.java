@@ -2,6 +2,11 @@ package com.techlabs.model;
 
 public class Foo {
 
+	@BeforeEveryUnitTest
+	public void bar() {
+		System.out.println("Before Unit Test Case");
+	}
+
 	@UnitTestCase
 	public boolean m1() {
 		return true; // passing testcase
