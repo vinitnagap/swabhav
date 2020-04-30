@@ -11,9 +11,8 @@ public class FindGuitarTest {
 		initializeInventory(inventory);
 
 		Map properties = new HashMap();
-		// properties.put("builder", Builder.COLLINGS);
+		properties.put("builder", Builder.GIBSON);
 		properties.put("backWood", Wood.MAPLE);
-		properties.put("topWood", Wood.MAPLE);
 		InstrumentSpec clientSpec = new InstrumentSpec(properties);
 
 		List matchingInstruments = (List) (inventory.search(clientSpec));
