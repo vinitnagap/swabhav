@@ -28,20 +28,6 @@ public class Inventory {
 		return null;
 	}
 
-	/*
-	 * public List search(GuitarSpec searchSpec) { List matchingGuitars = new
-	 * LinkedList(); for (Iterator i = inventory.iterator(); i.hasNext();) {
-	 * Guitar guitar = (Guitar) i.next(); if
-	 * (guitar.getSpec().matches(searchSpec)) matchingGuitars.add(guitar); }
-	 * return matchingGuitars; }
-	 * 
-	 * public List search(MandolinSpec searchSpec) { List matchingMandolins =
-	 * new LinkedList(); for (Iterator i = inventory.iterator(); i.hasNext();) {
-	 * Mandolin mandolin = (Mandolin) i.next(); if
-	 * (mandolin.getSpec().matches(searchSpec)) matchingMandolins.add(mandolin);
-	 * } return matchingMandolins; }
-	 */
-
 	public List search(InstrumentSpec searchSpec) {
 		List matchingInstruments = new LinkedList();
 		for (Iterator i = inventory.iterator(); i.hasNext();) {
