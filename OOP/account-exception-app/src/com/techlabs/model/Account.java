@@ -1,10 +1,11 @@
 package com.techlabs.model;
 
-public abstract class Account {
+public class Account {
 
 	private int accno;
 	private String name;
-	protected double balance;
+	private double balance;
+	private static int MINIMUM_BALANCE;
 
 	public Account(int accno, String name, double balance) {
 		this.accno = accno;
@@ -12,21 +13,57 @@ public abstract class Account {
 		this.balance = balance;
 	}
 
-	public void deposit(int amt) {
+	public void deposit(double amt) {
 		balance = balance + amt;
 	}
 
-	public abstract void withdraw(int amt);
+	public void withdraw(double amt) {
+		if (balance - amt < MINIMUM_BALANCE) {
+			throw new RuntimeException("Transaction Failed!!");
+		}
+		if (balance - amt > MINIMUM_BALANCE) {
+			balance = balance - amt;
+		} else if (balance == 0) {
+			System.out.println("Cannot Withdraw");
+		}
+		return;
+	}
 
-	public int getAccNo() {
-		return accno;
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+	public static void setMinimumBalance(int mimBalance) {
+		MINIMUM_BALANCE = mimBalance;
+	}
+
+	public double getBalance() {
+		return balance;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public double getBalance() {
-		return balance;
+	public int getAccNo() {
+		return accno;
 	}
+
+	@Override
+	public String toString() {
+		String str = super.toString() + "\naccno: " + accno + "\nname: " + name
+				+ "\nbalance: " + balance;
+
+		return str;
+	}
+
+	@Override
+	public boolean equals(Object a) {
+		Account account = (Account) a;
+		if (this.name == account.name && this.accno == account.accno
+				&& this.balance == account.balance)
+			return true;
+		return false;
+	}
+
 }
