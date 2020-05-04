@@ -1,31 +1,32 @@
 package com.techlabs.model;
 
-public class Professor extends Person {
+public class Professor extends Person implements SalariedEmployee {
 
 	private double netSalary = 0;
-	private double salaryPerHour;
+	private double salaryPerLecture;
 
 	public Professor(int id, String address, String dateOfBirth,
-			double salaryPerHour) {
+			double salaryPerLecture) {
 		super(id, address, dateOfBirth);
-		this.salaryPerHour = salaryPerHour;
+		this.salaryPerLecture = salaryPerLecture;
 	}
 
-	public void updateSalary(int hours) {
-		this.netSalary = calculateNetSalary(hours);
+	public void updateSalary(int lectures) {
+		this.netSalary = calculateNetSalary(lectures);
 
 	}
 
-	private double calculateNetSalary(int hours) {
-		return (hours * salaryPerHour);
+	@Override
+	public double calculateNetSalary(int lectures) {
+		return (lectures * salaryPerLecture);
 	}
 
 	public double getNetSalary() {
 		return netSalary;
 	}
 
-	public double getSalaryPerHour() {
-		return salaryPerHour;
+	public double getSalaryPerLecture() {
+		return salaryPerLecture;
 	}
 
 	public String getPerson() {

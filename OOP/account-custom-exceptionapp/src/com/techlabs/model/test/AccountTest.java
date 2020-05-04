@@ -10,9 +10,8 @@ public class AccountTest {
 		Account a1 = new Account(101, "abc", 1000);
 		try {
 			a1.withdraw(600);
-		} catch (InsufficientFundsException ex) {
+		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
-
 	}
 }

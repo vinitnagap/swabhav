@@ -16,7 +16,7 @@ public class ProfessorTester {
 
 	@Test
 	public void test_checkSalaryPerHouris1000() {
-		assertEquals(1000, professor.getSalaryPerHour(), .0);
+		assertEquals(1000, professor.getSalaryPerLecture(), .0);
 
 	}
 

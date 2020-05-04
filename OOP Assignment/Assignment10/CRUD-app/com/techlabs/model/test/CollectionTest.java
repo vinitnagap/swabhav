@@ -13,11 +13,11 @@ public class CollectionTest {
 
 	public static void main(String[] args) {
 
-		collectionOperation(new ArrayList());
-		collectionOperation(new LinkedList());
-		collectionOperation(new ArrayList(new HashSet()));
+		// collectionOperation(new ArrayList());
+		// collectionOperation(new LinkedList());
+		// collectionOperation(new ArrayList(new HashSet()));
 		collectionOperation(new ArrayList(new LinkedHashSet()));
-		collectionOperation(new ArrayList(new TreeSet()));
+		// collectionOperation(new ArrayList(new TreeSet()));
 	}
 
 	public static void collectionOperation(Object obj) {
@@ -25,9 +25,10 @@ public class CollectionTest {
 
 		CollectionClass object = new CollectionClass();
 		object.add(collection, 1);
-		object.add(collection, "xyz");
-		object.delete(collection, 1);
+		object.add(collection, 2);
+		object.add(collection, 1);
+		// object.delete(collection, 1);
 		object.read(collection);
-		System.out.println(object.search(collection, "xyz"));
+		// System.out.println(object.search(collection, "xyz"));
 	}
 }
