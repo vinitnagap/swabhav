@@ -11,6 +11,7 @@ public class Professor extends Person implements SalariedEmployee {
 		this.salaryPerLecture = salaryPerLecture;
 	}
 
+	@Override
 	public void updateSalary(int lectures) {
 		this.netSalary = calculateNetSalary(lectures);
 
@@ -21,10 +22,12 @@ public class Professor extends Person implements SalariedEmployee {
 		return (lectures * salaryPerLecture);
 	}
 
+	@Override
 	public double getNetSalary() {
 		return netSalary;
 	}
 
+	@Override
 	public double getSalaryPerLecture() {
 		return salaryPerLecture;
 	}
