@@ -8,9 +8,10 @@ public class DatabaseLoader {
 	TreeSet<Employee> employees = new TreeSet<Employee>(new SalaryComparator());
 
 	public void loadData() throws Exception {
-		// UrlLoader readData = new UrlLoader();
-		FileLoader readData = new FileLoader();
-		ArrayList<String> lines = readData.getData();
+		FileLoader readFileData = new FileLoader();
+		UrlLoader readUrlData = new UrlLoader();
+		ArrayList<String> lines = readFileData.getData();
+		lines.addAll(readUrlData.getData());
 		for (String line : lines) {
 			String[] elements = line.split(",");
 			int empId = Integer.parseInt(elements[0]);
