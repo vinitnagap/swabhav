@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.TreeSet;
 
-public class DatabaseLoader {
+public class EmployeeDataAnalyzer {
 	TreeSet<Employee> employees = new TreeSet<Employee>(new SalaryComparator());
 
-	public void loadData() throws Exception {
-		FileLoader readFileData = new FileLoader();
-		UrlLoader readUrlData = new UrlLoader();
-		ArrayList<String> lines = readFileData.getData();
-		lines.addAll(readUrlData.getData());
+	public void loadData(IDatabaseLoader object) throws Exception {
+		// FileLoader readFileData = new FileLoader();
+		// UrlLoader readUrlData = new UrlLoader();
+		ArrayList<String> lines = object.getData();
+		// lines.addAll(readUrlData.getData());
 		for (String line : lines) {
 			String[] elements = line.split(",");
 			int empId = Integer.parseInt(elements[0]);
@@ -35,5 +35,16 @@ public class DatabaseLoader {
 
 	public Collection<Employee> getEmployees() {
 		return employees;
+	}
+
+	public Employee getMaxSalariedEmployee() {
+		Employee richEmployee = null;
+		richEmployee = employees.first();
+		for (Employee employee : employees) {
+			if (richEmployee.getSalary() < employee.getSalary()) {
+				richEmployee = employee;
+			}
+		}
+		return richEmployee;
 	}
 }

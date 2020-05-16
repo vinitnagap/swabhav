@@ -2,26 +2,20 @@ package com.techlabs.model.test;
 
 import java.util.Collection;
 
-import com.techlabs.model.DatabaseLoader;
+import com.techlabs.model.EmployeeDataAnalyzer;
 import com.techlabs.model.Employee;
+import com.techlabs.model.FileLoader;
 
 public class Test {
 	public static void main(String[] args) throws Exception {
-		DatabaseLoader databaseObject = new DatabaseLoader();
-		databaseObject.loadData();
+		EmployeeDataAnalyzer databaseObject = new EmployeeDataAnalyzer();
+		databaseObject.loadData(new FileLoader());
 		Collection<Employee> employees = databaseObject.getEmployees();
-		Employee richEmployee = null;
 		for (Employee employee : employees) {
-			richEmployee = employee;
 			printInfo(employee);
 		}
-		for (Employee employee : employees) {
-			if (richEmployee.getSalary() < employee.getSalary()) {
-				richEmployee = employee;
-			}
-		}
 		System.out.println("\nRichest Employee");
-		printInfo(richEmployee);
+		printInfo(databaseObject.getMaxSalariedEmployee());
 
 		String m = "Manager", c = "Clerk", p = "President", s = "Salesman", a = "Analyst";
 		int managerCount = 0, clerkCount = 0, presidentCount = 0, salesmanCount = 0, analystCount = 0, deptId10 = 10, deptId20 = 20, deptId30 = 30, deptId10Count = 0, deptId20Count = 0, deptId30Count = 0;

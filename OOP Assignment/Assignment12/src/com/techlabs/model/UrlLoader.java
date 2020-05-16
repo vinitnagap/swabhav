@@ -7,7 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class UrlLoader {
+public class UrlLoader implements IDatabaseLoader {
 	ArrayList<String> lines = new ArrayList<String>();
 
 	public UrlLoader() {
