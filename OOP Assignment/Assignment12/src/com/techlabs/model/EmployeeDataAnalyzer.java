@@ -2,6 +2,8 @@ package com.techlabs.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class EmployeeDataAnalyzer {
@@ -47,4 +49,22 @@ public class EmployeeDataAnalyzer {
 		}
 		return richEmployee;
 	}
+
+	public Map<String, Integer> getDesignationwiseEmps() {
+		TreeSet<String> designations = new TreeSet<String>();
+		for (Employee employee : employees) {
+			designations.add(employee.getRole());
+		}
+		TreeMap<String, Integer> group = new TreeMap<String, Integer>();
+		for (String designation : designations) {
+			int count = 0;
+			for (Employee employee : employees) {
+				if (designation.equalsIgnoreCase(employee.getRole()))
+					count++;
+			}
+			group.put(designation, count);
+		}
+		return group;
+	}
+
 }
