@@ -9,8 +9,8 @@ import com.techlabs.model.FileLoader;
 
 public class Test {
 	public static void main(String[] args) throws Exception {
-		EmployeeDataAnalyzer databaseObject = new EmployeeDataAnalyzer();
-		databaseObject.loadData(new FileLoader());
+		EmployeeDataAnalyzer databaseObject = new EmployeeDataAnalyzer(
+				new FileLoader());
 		Collection<Employee> employees = databaseObject.getEmployees();
 		for (Employee employee : employees) {
 			printInfo(employee);
@@ -26,7 +26,7 @@ public class Test {
 	private static void printInfo(Employee employee) {
 		System.out.print("Emp Id:" + employee.getEmployeeId());
 		System.out.print(" Name:" + employee.getEmployeeName());
-		System.out.print(" Role:" + employee.getRole());
+		System.out.print(" Designation:" + employee.getDesignation());
 		System.out.print(" ManagerId:" + employee.getManagerId());
 		System.out.print(" Joining Date:" + employee.getJoiningDate());
 		System.out.print(" Salary:" + employee.getSalary());

@@ -15,7 +15,7 @@ public class LineItem implements Comparable<LineItem> {
 	}
 
 	public double calculateItemCost() {
-		return quantity * product.getPrice();
+		return quantity * product.totalCost();
 	}
 
 	public UUID getId() {

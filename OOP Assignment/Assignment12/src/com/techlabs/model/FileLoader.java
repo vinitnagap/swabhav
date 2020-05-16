@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-public class FileLoader implements IDatabaseLoader {
+public class FileLoader implements ILoader {
 	ArrayList<String> lines = new ArrayList<String>();
 
 	public FileLoader() throws Exception {

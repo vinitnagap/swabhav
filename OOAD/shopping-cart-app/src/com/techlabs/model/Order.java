@@ -26,7 +26,7 @@ public class Order {
 	public double checkoutCost() {
 		double totalCost = 0;
 		for (LineItem item : items) {
-			totalCost = item.calculateItemCost();
+			totalCost = totalCost + item.calculateItemCost();
 		}
 		return totalCost;
 	}

@@ -1,7 +1,7 @@
 package com.techlabs.model;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -9,11 +9,8 @@ import java.util.TreeSet;
 public class EmployeeDataAnalyzer {
 	TreeSet<Employee> employees = new TreeSet<Employee>(new SalaryComparator());
 
-	public void loadData(IDatabaseLoader object) throws Exception {
-		// FileLoader readFileData = new FileLoader();
-		// UrlLoader readUrlData = new UrlLoader();
-		ArrayList<String> lines = object.getData();
-		// lines.addAll(readUrlData.getData());
+	public EmployeeDataAnalyzer(ILoader object) throws Exception {
+		List<String> lines = object.getData();
 		for (String line : lines) {
 			String[] elements = line.split(",");
 			int empId = Integer.parseInt(elements[0]);
@@ -51,20 +48,19 @@ public class EmployeeDataAnalyzer {
 	}
 
 	public Map<String, Integer> getDesignationwiseEmps() {
-		TreeSet<String> designations = new TreeSet<String>();
+		TreeMap<String, Integer> groups = new TreeMap<String, Integer>();
+		int count = 0;
 		for (Employee employee : employees) {
-			designations.add(employee.getRole());
-		}
-		TreeMap<String, Integer> group = new TreeMap<String, Integer>();
-		for (String designation : designations) {
-			int count = 0;
-			for (Employee employee : employees) {
-				if (designation.equalsIgnoreCase(employee.getRole()))
-					count++;
+			if (groups.containsKey(employee.getDesignation())) {
+				count = groups.get(employee.getDesignation());
+				count++;
+				groups.put(employee.getDesignation(), count);
+			} else {
+				count = 1;
+				groups.put(employee.getDesignation(), count);
 			}
-			group.put(designation, count);
 		}
-		return group;
+		return groups;
 	}
 
 }

@@ -7,19 +7,19 @@ import java.util.Date;
 public class Employee {
 	private int empId;
 	private String empName;
-	private String role;
+	private String designation;
 	private int managerId;
 	private Date joiningDate;
 	private int salary;
 	private int comm;
 	private int deptId;
 
-	Employee(int empId, String empName, String role, int managerId,
+	Employee(int empId, String empName, String Designation, int managerId,
 			String joiningDate, int salary, int comm, int deptId)
 			throws ParseException {
 		this.empId = empId;
 		this.empName = empName;
-		this.role = role;
+		this.designation = Designation;
 		this.managerId = managerId;
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
 		this.joiningDate = (Date) dateFormat.parse(joiningDate);
@@ -36,8 +36,8 @@ public class Employee {
 		return empName;
 	}
 
-	public String getRole() {
-		return role;
+	public String getDesignation() {
+		return designation;
 	}
 
 	public int getManagerId() {

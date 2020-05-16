@@ -48,8 +48,7 @@ public class Test {
 				+ " Customer Address : " + customer.getAddress());
 		System.out.println("Order Details : ");
 		for (Order order : customer.getOrders()) {
-			System.out.println("Id : " + order.getId() + " Items : "
-					+ order.getItems() + " Total Cost : "
+			System.out.println("Id : " + order.getId()+ " Total Cost : "
 					+ order.checkoutCost());
 		}
 	}
