@@ -1,6 +1,5 @@
 package com.techlabs.model;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,14 +12,24 @@ public class Order {
 	private Date date;
 	private List<LineItem> items = new ArrayList<LineItem>();
 
-	public Order(UUID id, String date) throws ParseException {
-		this.id = id;
-		SimpleDateFormat sdf = new SimpleDateFormat("DD/MM/YYYY");
-		this.date = sdf.parse(date);
+	public Order(UUID id, String date) {
+		try {
+			this.id = id;
+			SimpleDateFormat sdf = new SimpleDateFormat("DD/MM/YYYY");
+			this.date = sdf.parse(date);
+		} catch (Exception e) {
+
+		}
 	}
 
-	public void addItem(LineItem item) {
-		items.add(item);
+	public void addItem(LineItem lineItem) {
+		if (this.getItems().contains(lineItem)) {
+			int index = this.getItems().indexOf(lineItem);
+			this.getItems().get(index).incrementQuantity(lineItem.getQuantity());
+
+		} else {
+			items.add(lineItem);
+		}
 	}
 
 	public double checkoutCost() {

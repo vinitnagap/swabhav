@@ -1,0 +1,12 @@
+Customer ID : a0ab94da-76fc-457f-9c28-9ebfb0245943 Customer Name : Kishore Customer Address : Mumbai
+Order Details : 
+Id : 61f4243d-70d4-4bac-b487-6c842b1fa676 Total Cost : 3400.0
+List of Products : 
+Id : 44d5009b-4339-4bfd-ae57-e5a059aa2bec Product : Book Quantity : 20
+Id : f777dca7-34e4-4f5b-b90c-d634ec3ad920 Product : Pen Quantity : 200
+Id : 130748d2-bd4e-4a5a-8d8f-aac0fe31f4a4 Product : Ruler Quantity : 20
+Id : 20d561a4-2f41-4fef-b161-72952935d1f1 Total Cost : 105000.0
+List of Products : 
+Id : 722500ab-8895-4cc3-8278-8e13d8b66c01 Product : Bag Quantity : 50
+Id : 2b74c224-0773-446d-afb7-a4be02f715f4 Product : Mobile Quantity : 4
+Total Amount : 108400.0

@@ -2,7 +2,7 @@ package com.techlabs.model;
 
 import java.util.UUID;
 
-public class LineItem implements Comparable<LineItem> {
+public class LineItem {
 
 	private UUID id;
 	private int quantity;
@@ -30,19 +30,9 @@ public class LineItem implements Comparable<LineItem> {
 		return quantity;
 	}
 
-	@Override
-	public boolean equals(Object a) {
-		LineItem item = (LineItem) a;
-		if (this.hashCode() == item.hashCode()) {
-			return true;
-		}
-		return false;
-	}
+	public void incrementQuantity(int quantities) {
+		this.quantity = quantity + quantities;
 
-	@Override
-	public int compareTo(LineItem o) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 }

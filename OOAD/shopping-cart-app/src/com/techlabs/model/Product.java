@@ -17,7 +17,7 @@ public class Product {
 	}
 
 	public double totalCost() {
-		return (price * discountPercentage) / 100;
+		return (price * (100 - discountPercentage) / 100);
 	}
 
 	public UUID getId() {
