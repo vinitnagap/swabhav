@@ -7,14 +7,14 @@ import com.gsf.unit.Unit;
 
 public class ThreeDBoard {
 
-	public List boards = new ArrayList();
+	public List<Board> boards = new ArrayList<Board>();
 	private int z;
 
 	public Tile getTile(int x, int y, int z) {
 
 		Board b = (Board) boards.get(z);
 		return b.getTile(x, y);
-	
+
 	}
 
 	public void addUnit(Unit unit, int x, int y, int z) {

@@ -1,6 +1,5 @@
 package com.techlabs.model;
 
-import java.util.Iterator;
 
 public class LineItem {
 
