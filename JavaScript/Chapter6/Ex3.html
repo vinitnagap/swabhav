@@ -1,0 +1,8 @@
+<script type="text/javascript">
+	function animationLoop(){
+		var requestID = requestAnimationFrame(animationLoop);
+	}
+	animationLoop();
+
+	cancelAnimationFrame(requestID);
+</script>

@@ -11,10 +11,10 @@ public class FooTest {
 	}
 
 	public static void doReflection(Class reflection) {
-		Method[] m = reflection.getDeclaredMethods();
-		for (Method methods : m) {
-			if (methods.isAnnotationPresent(NeedToRefactor.class)) {
-				System.out.println(methods.getName() + " "
+		Method[] methods = reflection.getDeclaredMethods();
+		for (Method method : methods) {
+			if (method.isAnnotationPresent(NeedToRefactor.class)) {
+				System.out.println(method.getName() + " "
 						+ NeedToRefactor.value);
 
 			}
