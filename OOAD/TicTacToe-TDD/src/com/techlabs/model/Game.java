@@ -22,18 +22,19 @@ public class Game {
 		return nextPlayer;
 	}
 
-	public String play(int pos) {
-		String status;
+	public void play(int pos) {
 		Player player = getCurrentPlayer();
 		board.getCell(pos).setMark(player.getPlayerMark());
 		Player tempPlayer = currentPlayer;
 		currentPlayer = nextPlayer;
 		nextPlayer = tempPlayer;
-		status = resultAnalyser.analyseResult();
-		return status;
 	}
 
 	public Board getBoard() {
 		return board;
+	}
+
+	public String getStatus() {
+		return resultAnalyser.analyseResult();
 	}
 }

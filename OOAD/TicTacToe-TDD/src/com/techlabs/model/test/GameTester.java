@@ -21,7 +21,8 @@ public class GameTester {
 		players[0] = new Player("Ram", Mark.X);
 		players[1] = new Player("Gopal", Mark.O);
 		Game game = new Game(players, board, resultAnalyser);
-		assertEquals("In Progress", game.play(5));
+		game.play(5);
+		assertEquals("In Progress", game.getStatus());
 
 	}
 
@@ -47,4 +48,17 @@ public class GameTester {
 
 	}
 
+	@Test
+	public void test_checkGameWinByPlayer1() {
+		players[0] = new Player("Ram", Mark.X);
+		players[1] = new Player("Gopal", Mark.O);
+		Game game = new Game(players, board, resultAnalyser);
+		game.play(0);
+		game.play(3);
+		game.play(1);
+		game.play(4);
+		game.play(2);
+		assertEquals("Win", game.getStatus());
+
+	}
 }
