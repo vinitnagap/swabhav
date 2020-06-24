@@ -1,16 +1,26 @@
 package com.techlabs.model;
 
+
 public class Game {
 
+	private static Game instance;
 	private Board board;
 	private ResultAnalyser resultAnalyser;
 	private Player currentPlayer, nextPlayer;
 
-	public Game(Player[] players, Board board, ResultAnalyser resultAnalyser) {
+	private Game(Player[] players, Board board, ResultAnalyser resultAnalyser) {
 		this.board = board;
 		this.resultAnalyser = resultAnalyser;
 		this.currentPlayer = players[0];
 		this.nextPlayer = players[1];
+	}
+
+	public static Game getInstance(Player[] players, Board board, ResultAnalyser resultAnalyser) {
+		if (instance == null) {
+			instance = new Game(players, board, resultAnalyser);
+			return instance;
+		}
+		return instance;
 	}
 
 	public Player getCurrentPlayer() {

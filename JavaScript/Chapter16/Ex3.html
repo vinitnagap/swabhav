@@ -1,0 +1,24 @@
+<script type="text/javascript">
+	
+	var person = {
+		getName : function() {
+			return "Name is "+this.firstName+" "+this.lastName;
+		}
+	};
+
+	var funnyGuy1 = Object.create(person);
+	funnyGuy1.firstName = "Narendra";
+	funnyGuy1.lastName = "Modi";
+
+	var funnyGuy2 = Object.create(person);
+	funnyGuy2.firstName = "Donald";
+	funnyGuy2.lastName = "Trump";
+
+	var funnyGuy3 = Object.create(person);
+	funnyGuy3.firstName = "Rahul";
+	funnyGuy3.lastName = "Dravid";
+
+	
+	alert(funnyGuy2.getName());
+
+</script>
