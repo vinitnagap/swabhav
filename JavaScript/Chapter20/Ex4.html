@@ -1,0 +1,20 @@
+<script type="text/javascript">
+	function quotations(names){
+		var quotes = [];
+
+		for(var i=0;i<names.length;i++){
+			(function(index){
+				var theFunction = function(){
+					return "My name is "+names[index]+"!";
+				}
+				quotes.push(theFunction);
+			})(i);
+		}
+		return quotes;
+	}
+
+	var people = ["Tony Stark","James Bond","Rick James"];
+	var peopleFunction = quotations(people);
+	var person = peopleFunction[0];
+	alert(person());
+</script>

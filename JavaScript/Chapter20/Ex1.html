@@ -1,0 +1,21 @@
+<script type="text/javascript">
+	// Anonymous funtion 1
+	var isLucky = function(){
+		var foo = Math.round(Math.random() * 100);
+
+		if(foo>50){
+			return "Lucky";
+		}
+		else{
+			return "Not Lucky";
+		}
+	}
+
+	var me = isLucky();
+	alert(me);
+
+	// Anonymous funtion 2
+	window.setTimeout(function(){
+		alert("Hello");
+	},2000);
+</script>

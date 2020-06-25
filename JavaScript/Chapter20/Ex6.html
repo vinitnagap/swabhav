@@ -1,0 +1,20 @@
+<script type="text/javascript">
+	var awesomeSauce = (function(){
+		var secretCode = "Hello";
+
+		function privateCheckCode(code){
+			if(secretCode == code){
+				alert("Correct");
+			}else {
+				alert("Sorry");
+			}
+		}
+
+ 		return {
+ 			checkCode : privateCheckCode
+ 		};
+	})();
+
+	var foo = Object.create(awesomeSauce);
+	alert(foo.secretCode);	
+</script>

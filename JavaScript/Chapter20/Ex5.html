@@ -1,0 +1,17 @@
+<script type="text/javascript">
+	var weakSauce = {
+		secretCode : "Hello",
+
+		checkCode : function(code){
+			if(this.secretCode == code){
+				alert("Correct");
+			}else{
+				alert("Sorry");
+			}
+		}
+	};
+	
+	//weakSauce.checkCode("Hello");
+	var bar = Object.create(weakSauce);
+	alert(bar.secretCode);
+</script>
