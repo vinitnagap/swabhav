@@ -10,10 +10,8 @@ public class NameFrame extends JFrame {
 	private JTextField textfield;
 
 	public NameFrame() {
-		super();
-		JButton b = new JButton("Submit");
+		JButton b = new JButton("Next");
 		b.setBounds(100, 100, 140, 40);
-		// enter name label
 		JLabel label = new JLabel();
 		label.setText("Enter Name :");
 		label.setBounds(10, 10, 100, 100);
@@ -33,7 +31,7 @@ public class NameFrame extends JFrame {
 
 	}
 
-	public JTextField getTextName() {
-		return textfield;
+	public String getTextName() {
+		return textfield.getText();
 	}
 }

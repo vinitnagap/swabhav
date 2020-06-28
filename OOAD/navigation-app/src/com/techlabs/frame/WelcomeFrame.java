@@ -20,8 +20,6 @@ public class WelcomeFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		// JLabel label = new JLabel();
-
 		JFrame frame2 = new JFrame("Clicked");
 		frame2.setVisible(true);
 		frame2.setSize(200, 200);
