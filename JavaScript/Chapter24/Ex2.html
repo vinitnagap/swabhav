@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MyPage</title>
+	<style>
+		.bar {
+
+		}
+
+		.foo{
+
+		}
+		.zorb{
+
+		}
+	</style>
+</head>
+<body>
+	<div id="myDiv" class="bar foo zorb">Hello</div>
+	<script type="text/javascript">
+		var divElement = document.querySelector("#myDiv");
+		divElement.classList.add("baz");
+		alert(divElement.classList);
+
+		divElement.classList.remove("foo");
+		alert(divElement.classList);
+
+		divElement.classList.toggle("bar");
+		divElement.classList.toggle("bar");
+		divElement.classList.toggle("bar");
+		alert(divElement.classList);
+
+		if(divElement.classList.contains("zorb")){
+			alert("True");
+		}
+	</script>
+
+</body>
+</html>
