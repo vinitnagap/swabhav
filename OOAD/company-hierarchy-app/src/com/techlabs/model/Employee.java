@@ -14,9 +14,8 @@ public class Employee {
 	private int comm;
 	private int deptId;
 
-	Employee(int empId, String empName, String Designation, int managerId,
-			String joiningDate, int salary, int comm, int deptId)
-			throws ParseException {
+	public Employee(int empId, String empName, String Designation, int managerId, String joiningDate, int salary,
+			int comm, int deptId) throws ParseException {
 		this.empId = empId;
 		this.empName = empName;
 		this.designation = Designation;

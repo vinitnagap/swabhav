@@ -2,12 +2,10 @@ package com.techlabs.model;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 import java.util.TreeSet;
 
-public class EmployeeDataAnalyzer {
-	TreeSet<Employee> employees = new TreeSet<Employee>(new SalaryComparator());
+public class EmployeeDataAnalyzer implements IEmployeeList {
+	TreeSet<Employee> employees = new TreeSet<>(new SalaryComparator());
 
 	public EmployeeDataAnalyzer(ILoader object) throws Exception {
 		List<String> lines = object.getData();
@@ -27,8 +25,7 @@ public class EmployeeDataAnalyzer {
 				comm = Integer.parseInt(elements[6]);
 			}
 			int deptId = Integer.parseInt(elements[7]);
-			employees.add(new Employee(empId, empName, role, managerId,
-					joiningDate, salary, comm, deptId));
+			employees.add(new Employee(empId, empName, role, managerId, joiningDate, salary, comm, deptId));
 		}
 	}
 
@@ -36,31 +33,19 @@ public class EmployeeDataAnalyzer {
 		return employees;
 	}
 
-	public Employee getMaxSalariedEmployee() {
-		Employee richEmployee = null;
-		richEmployee = employees.first();
+	@Override
+	public String show() {
+		// TODO Auto-generated method stub
+		String details = "";
 		for (Employee employee : employees) {
-			if (richEmployee.getSalary() < employee.getSalary()) {
-				richEmployee = employee;
+			details += employee.getEmployeeName() + "\n";
+			for (Employee emp : employees) {
+				if (employee.getEmployeeId() == emp.getManagerId()) {
+					details += emp.getEmployeeName();
+				}
 			}
 		}
-		return richEmployee;
-	}
-
-	public Map<String, Integer> getDesignationwiseEmps() {
-		TreeMap<String, Integer> groups = new TreeMap<String, Integer>();
-		int count = 0;
-		for (Employee employee : employees) {
-			if (groups.containsKey(employee.getDesignation())) {
-				count = groups.get(employee.getDesignation());
-				count++;
-				groups.put(employee.getDesignation(), count);
-			} else {
-				count = 1;
-				groups.put(employee.getDesignation(), count);
-			}
-		}
-		return groups;
+		return details;
 	}
 
 }
