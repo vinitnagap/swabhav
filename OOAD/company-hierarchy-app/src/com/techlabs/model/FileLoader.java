@@ -24,6 +24,7 @@ public class FileLoader implements ILoader {
 	}
 
 	public ArrayList<String> getData() {
+		lines.remove(0);
 		return lines;
 	}
 

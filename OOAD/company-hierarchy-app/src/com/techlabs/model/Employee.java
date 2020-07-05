@@ -3,6 +3,8 @@ package com.techlabs.model;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Employee {
 	private int empId;
@@ -13,6 +15,7 @@ public class Employee {
 	private int salary;
 	private int comm;
 	private int deptId;
+	private Set<Employee> employees = new TreeSet<Employee>(new IDComparator());
 
 	public Employee(int empId, String empName, String Designation, int managerId, String joiningDate, int salary,
 			int comm, int deptId) throws ParseException {
@@ -25,6 +28,26 @@ public class Employee {
 		this.salary = salary;
 		this.comm = comm;
 		this.deptId = deptId;
+	}
+
+	public void addReferralEmployee(Employee employee) {
+		employees.add(employee);
+	}
+
+	public String show(int index) {
+		String details = empName + "-(" + designation + ")";
+		for (Employee employee : employees) {
+			details += "\n" + seperator(index) + "|->" + employee.show(index + 1);
+		}
+		return details;
+	}
+
+	private String seperator(int index) {
+		String spacing = "";
+		for (int i = 0; i <= index; i++) {
+			spacing += "  ";
+		}
+		return spacing;
 	}
 
 	public int getEmployeeId() {
@@ -58,4 +81,5 @@ public class Employee {
 	public int getDeptId() {
 		return deptId;
 	}
+
 }

@@ -1,11 +1,11 @@
 package com.techlabs.model;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.TreeSet;
+import java.util.Map;
+import java.util.TreeMap;
 
-public class EmployeeDataAnalyzer implements IEmployeeList {
-	TreeSet<Employee> employees = new TreeSet<>(new SalaryComparator());
+public class EmployeeDataAnalyzer {
+	Map<Integer, Employee> employees = new TreeMap<Integer, Employee>();
 
 	public EmployeeDataAnalyzer(ILoader object) throws Exception {
 		List<String> lines = object.getData();
@@ -25,27 +25,22 @@ public class EmployeeDataAnalyzer implements IEmployeeList {
 				comm = Integer.parseInt(elements[6]);
 			}
 			int deptId = Integer.parseInt(elements[7]);
-			employees.add(new Employee(empId, empName, role, managerId, joiningDate, salary, comm, deptId));
+			employees.put(empId, new Employee(empId, empName, role, managerId, joiningDate, salary, comm, deptId));
+		}
+		for (Map.Entry employee : employees.entrySet()) {
+			findEmployee((Employee) employee.getValue());
 		}
 	}
 
-	public Collection<Employee> getEmployees() {
+	private void findEmployee(Employee employee) {
+		Employee emp1 = employee;
+		Employee emp2 = employees.get(emp1.getManagerId());
+		if (emp2 != null && emp1 != null)
+			emp2.addReferralEmployee(emp1);
+	}
+
+	public Map<Integer, Employee> getEmployees() {
 		return employees;
-	}
-
-	@Override
-	public String show() {
-		// TODO Auto-generated method stub
-		String details = "";
-		for (Employee employee : employees) {
-			details += employee.getEmployeeName() + "\n";
-			for (Employee emp : employees) {
-				if (employee.getEmployeeId() == emp.getManagerId()) {
-					details += emp.getEmployeeName();
-				}
-			}
-		}
-		return details;
 	}
 
 }
