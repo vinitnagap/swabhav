@@ -42,6 +42,15 @@ public class Employee {
 		return details;
 	}
 
+	public String showXml(int index) {
+		String details = "<" + designation + ">" + empName;
+		for (Employee employee : employees) {
+			details += "\n" + seperator(index) + employee.showXml(index + 1);
+		}
+		details += "\n" + seperator(index - 1) + "</" + designation + ">";
+		return details;
+	}
+
 	private String seperator(int index) {
 		String spacing = "";
 		for (int i = 0; i <= index; i++) {
@@ -80,6 +89,10 @@ public class Employee {
 
 	public int getDeptId() {
 		return deptId;
+	}
+
+	public Set<Employee> getEmployees() {
+		return employees;
 	}
 
 }
