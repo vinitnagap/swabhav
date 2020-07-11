@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class EmployeeDataAnalyzer {
+public class OrganizationHierarchyBuilder {
 	Map<Integer, Employee> employees = new TreeMap<Integer, Employee>();
 
-	public EmployeeDataAnalyzer(ILoader object) throws Exception {
+	public OrganizationHierarchyBuilder(ILoader object) throws Exception {
 		List<String> lines = object.getData();
 		for (String line : lines) {
 			String[] elements = line.split(",");
@@ -38,16 +38,19 @@ public class EmployeeDataAnalyzer {
 		if (emp2 != null && emp1 != null)
 			emp2.addReferralEmployee(emp1);
 	}
-	
-	public void addEmployee(Employee employee) {
-		employees.put(employee.getEmployeeId(),employee);
-		for (Map.Entry emp : employees.entrySet()) {
-			findEmployee((Employee) emp.getValue());
-		}
-	}
 
 	public Map<Integer, Employee> getEmployees() {
 		return employees;
+	}
+
+	public Employee getPresident() {
+		for (Map.Entry employee : employees.entrySet()) {
+			Employee referredEmployee = (Employee) employee.getValue();
+			if (referredEmployee.getDesignation().contains("PRESIDENT")) {
+				return referredEmployee;
+			}
+		}
+		return null;
 	}
 
 }
