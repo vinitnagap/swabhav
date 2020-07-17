@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events</title>
+</head>
+<body id="theBody" class="item">
+	<button id="myButton">button</button>
+		
+	<script type="text/javascript">
+		document.addEventListener("mousewheel",mouseWheeling,false);
+		document.addEventListener("DOMMouseScroll",mouseWheeling,false);
+
+		function mouseWheeling(e){
+			var scrollDirection = e.wheelDelta || -1*e.detail;
+			if(scrollDirection>0){
+				console.log("Scrolling up "+ scrollDirection);
+			}else{
+				console.log("Scrolling down "+ scrollDirection);
+			}
+		}
+	</script>
+</body>
+</html>

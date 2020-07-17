@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="outerContainer">
+		<div>
+			<h1>Hello World</h1>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="share">
+			<p>Something</p>
+			<img src="Instagram.png"/>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var share = document.querySelector(".share");
+		var shareClone = share.cloneNode(false);
+		document.querySelector("#footer").appendChild(shareClone);
+	</script>
+</body>
+</html>

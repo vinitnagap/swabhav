@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events</title>
+</head>
+<body id="theBody" class="item">
+	<button id="myButton">button</button>
+		
+	<script type="text/javascript">
+		document.addEventListener("mousedown",buttonPress,false);
+
+		function buttonPress(e){
+			if(e.button == 0){
+				console.log("Left");
+			}
+			else if(e.button == 1){
+				console.log("Center");
+			}
+			else if(e.button == 2){
+				console.log("Right");
+			}
+			else{
+				console.log("Something Wrong");
+			}
+		}
+	</script>
+</body>
+</html>

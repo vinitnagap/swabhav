@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1 id="theTitle" class="highlight summer">What's happening?</h1>
+
+	<script type="text/javascript">
+		var newElement = document.createElement("p");
+		newElement.textContent = "I exist entirely in your imagination.";
+		var h1Element = document.querySelector("h1");
+		document.body.insertBefore(newElement,h1Element.nextSibling);
+	</script>
+</body>
+</html>

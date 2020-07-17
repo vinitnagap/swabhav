@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events</title>
+</head>
+<body id="theBody" class="item">
+	<div id="one_a" class="item">
+		<div id="two" class="item">
+			<div id="three_a" class="item">
+				<button id="buttonOne" class="item">one</button>
+			</div>
+			<div id="three_b" class="item">
+				<button id="buttonTwo" class="item">two</button>
+				<button id="buttonThree" class="item">three</button>
+			</div>
+		</div>
+	</div>
+	<div id="one_b" class="item">
+		
+	</div>
+	<script type="text/javascript">
+		var items = document.querySelectorAll(".item");
+		for(var i=0; i<items.length; i++){
+			var e1 = items[i];
+			e1.addEventListener("click",doSomething,true);
+			e1.addEventListener("click",doSomething,false);
+		}
+
+		function doSomething(e){
+			console.log(e.currentTarget.id);
+		}
+	</script>
+</body>
+</html>

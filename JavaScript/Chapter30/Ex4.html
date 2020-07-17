@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events</title>
+</head>
+<body id="theBody" class="item">
+	<button id="myButton">button</button>
+		
+	<script type="text/javascript">
+		var button = document.querySelector("#myButton");
+		button.addEventListener("mousedown",mousePressed,false);
+		button.addEventListener("mouseup",mouseReleased,false);
+		button.addEventListener("click",mouseClicked,false);
+
+		function mousePressed(){
+			console.log("Mouse Down");
+		}
+
+		function mouseReleased(){
+			console.log("Mouse Up");
+		}
+
+		function mouseClicked(){
+			console.log("Clicked");
+		}
+	</script>
+</body>
+</html>

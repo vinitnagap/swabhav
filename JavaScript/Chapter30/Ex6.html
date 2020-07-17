@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events</title>
+</head>
+<body id="theBody" class="item">
+	<button id="myButton">button</button>
+		
+	<script type="text/javascript">
+		document.addEventListener("contextmenu",doSomething,false);
+
+		function doSomething(e){
+			e.preventDefault();
+		}
+	</script>
+</body>
+</html>

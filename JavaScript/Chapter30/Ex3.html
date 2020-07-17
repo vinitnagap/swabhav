@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events</title>
+</head>
+<body id="theBody" class="item">
+	<button id="myButton">button</button>
+		
+	<script type="text/javascript">
+		var button = document.querySelector("#myButton");
+		button.addEventListener("mouseover",hovered,false);
+		button.addEventListener("mouseout",hoveredOut,false);
+
+		function hovered(){
+			console.log("hovered");
+		}
+
+		function hoveredOut(){
+			console.log("Hovered Out");
+		}
+	</script>
+</body>
+</html>

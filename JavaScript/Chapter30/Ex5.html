@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events</title>
+</head>
+<body id="theBody" class="item">
+	<button id="myButton">button</button>
+		
+	<script type="text/javascript">
+		var button = document.querySelector("#myButton");
+		button.addEventListener("mousemove",doSomething,false);
+
+		function doSomething(){
+			console.log("Mouse Moved");
+		}
+	</script>
+</body>
+</html>
