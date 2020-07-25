@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Message2</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var text = document.createElement("text");
+		text.textContent = "Message:";
+		var textBox = document.createElement("textArea");
+		textBox.addEventListener("keyup",getText);
+		function getText(){
+			var details = textBox.value;
+			for(var i=0;i<10;i++){
+				details=details.replace(i,"");
+			}
+			message.textContent = details.toUpperCase();
+		}
+
+		var message = document.createElement("h1");
+		document.body.appendChild(text);
+		document.body.appendChild(textBox);
+		document.body.appendChild(message);
+
+		
+	</script>
+</body>
+</html>

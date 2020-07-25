@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var redButton = document.createElement("BUTTON");
+		redButton.value ="red";
+		var blueButton = document.createElement("BUTTON");
+		blueButton.value = "blue";
+		
+		redButton.addEventListener("mousedown",changeColor);
+		blueButton.addEventListener("mousedown",changeColor);
+
+		function changeColor(e){
+			var color = e.currentTarget.value;
+			document.body.style.backgroundColor = color;
+		}
+		document.body.appendChild(redButton);
+		document.body.appendChild(blueButton);
+	</script>
+
+</body>
+</html>

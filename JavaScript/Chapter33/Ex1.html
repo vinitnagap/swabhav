@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<theDude>
+		<button id=one>One</button>
+		<button id=two>Two</button>
+		<button id=three>Three</button>
+		<button id=four>Four</button>
+		<button id=five>Five</button>
+	</theDude>
+
+	<script type="text/javascript">
+		var theParent = document.querySelector("theDude");
+		theParent.addEventListener("click",doSomething,false);
+
+		function doSomething(e){
+			if(e.target !== e.currentTarget){
+				var clickedItem = e.target.id;
+				alert("Hello "+clickedItem);
+			}
+			e.stopPropagation();
+		}
+	</script>	
+</body>
+</html>

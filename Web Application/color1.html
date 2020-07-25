@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Color</title>
+</head>
+<body>
+	<select id=s1 onchange=colorChange()>
+		<option>Please Choose Color</option>
+		<option id=r1 onmouseover=getColor()>red</option>
+		<option id=r2 onmouseover=getColor()>blue</option>
+		<option id=r3 onmouseover=getColor()>green</option>
+	</select>
+
+<script>
+	function colorChange()
+	{
+		document.bgColor=document.querySelector("#s1").value;
+	}
+
+	function getColor()
+	{
+		a=document.querySelector("#s1").value;
+		if(a.querySelector("#r1"))
+		{
+			document.querySelector("#r1").style.background="red";
+		}
+		else if(a.querySelector("#r2"))
+		{
+		document.querySelector("#r2").style.background="blue";
+		}
+		else if(a.querySelector("#r3"))
+		{
+		document.querySelector("#r3").style.background="green";
+		}
+	}
+</script>
+</body>
+</html>
+

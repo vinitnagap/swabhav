@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Range Slider</h1>
+
+	<div class="slidecontainer">
+	 	<input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+	  	<p>Current Value: <span id="value"></span></p>
+	</div>
+
+	<script>
+		var slider = document.querySelector("#myRange");
+		var output = document.querySelector("#value");
+		output.innerHTML = slider.value;
+		var buttons = [];
+
+		slider.oninput = function() {
+		  output.innerHTML = this.value;
+		  removeButton();
+		  buttons.splice(0,buttons.length);
+		  for(var i=0 ; i<this.value;i++){
+		  	var button=document.createElement("BUTTON");
+		  	button.textContent = i+1;
+		  	button.id = i+1;
+		  	buttons.push(button);
+		  	document.body.appendChild(buttons[i]);
+		  	buttons[i].addEventListener("mousedown",getButtonId);	
+		  }
+		}
+
+		function getButtonId(e){
+			alert("Button "+e.currentTarget.id+" is pressed.");
+		}
+
+		function removeButton(){
+			for(var i=0;i<buttons.length;i++){
+				document.body.removeChild(buttons[i]);
+			}
+		}
+</script>
+
+</body>
+</html>
+
