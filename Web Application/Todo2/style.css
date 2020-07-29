@@ -6,9 +6,7 @@
 /*cell{
   text-decoration: line-through;
 }*/
-INPUT:checked{
-  text-decoration: line-through;
-}
+
 /* Style the list items */
 table{
   border: 1px solid black;

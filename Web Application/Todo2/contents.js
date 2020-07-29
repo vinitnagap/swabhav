@@ -23,6 +23,9 @@ function display(){
 		var cell = row.insertCell();
 		var checkboxElement = document.createElement("INPUT");
 		checkboxElement.type = "checkbox";
+		var notCompletedElement = document.createElement("NotCompleted");
+		var completedElement = document.createElement("Completed");
+		notCompletedElement.textContent = "Not Completed Items";
 		//cell.appendChild(checkbox);
 		//var button = document.createElement("BUTTON");
 		//var close = document.createTextNode("X");
@@ -32,13 +35,15 @@ function display(){
 		//};
 		//buttons.push(button);
 		checkboxes.push(checkboxElement);
-		checkboxes.forEach(checkbox => checkbox.addEventListener("click",handleCheck));
-		function handleCheck(e){
-			console.log(e);
-		}
+		//notCompletedElement.appendChild(lists[i]);
 		cell.innerHTML = lists[i];
 		//cell.appendChild(buttons[i]);
 		cell.appendChild(checkboxes[i]);
+		checkboxes.forEach(checkbox => checkbox.addEventListener("click",handleCheck));
+		function handleCheck(e){
+			console.log(e);
+			cell.style.textDecoration = "line-through"
+		}
 	}
 }
 		  	

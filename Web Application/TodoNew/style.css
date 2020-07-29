@@ -1,0 +1,43 @@
+body{
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+h2{
+	padding: 5px;
+	text-align: center;
+  background-color: black;
+
+}
+
+.addBtn{
+	padding: 5px;
+	background: #ddd;
+	position: absolute;
+}
+
+li {
+
+	margin: 10px;
+	color: black;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #eee;
+  font-size: 25px;
+  text-align: center;
+
+
+}
+.check{
+
+  position: absolute;
+  left: 30px;
+  top:5;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  border: none;
+  
+}
+
+

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Question Bank</title>
+</head>
+<body>
+	<button id="startButton">Start</button>
+	<script type="text/javascript">
+		var	optionMark = false;
+		var questionNo = 1;
+		var questionCount = 0;
+		var score = 0;
+		var startButtonElement = document.querySelector("#startButton");
+		startButtonElement.addEventListener("click",startTest,false);
+
+		var questions=[
+                {
+                    id: 1,
+                    text: "Capital of India is ________?",
+                    options: ["Mumbai", "Delhi", "Goa", "Assam"],
+                    answer: "Delhi"
+                },
+                {
+                    id: 2,
+                    text: "Chief minister of Maharashtra is _________?",
+                    options: ["Narendra Modi", "Yogi Adityanath", "Devendra Fadnavis", "Uddhav Thackeray"],
+                    answer: "Uddhav Thackeray"
+                },
+                {
+                    id: 3,
+                    text: "The first-ever Floating Basketball Court of India is installed in ________?",
+                    options: ["Kochi", "Puducherry", "Diu", "Mumbai"],
+                    answer: "Mumbai"
+                },
+                {
+                    id: 4,
+                    text: "Financial Capital of India is ________?",
+                    options: ["Mumbai", "Delhi", "Goa", "Assam"],
+                    answer: "Mumbai"
+                },
+                {
+                    id: 5,
+                    text: "Which one is the first search engine in internet?",
+                    options: ["Google", "Internet Explorer", "Archie", "Altavista"],
+                    answer: "Archie"
+                }
+            ]
+		function startTest(e){
+			this.remove();
+			getQuestions();
+		}
+
+		function getQuestions(e){
+			//optionMark = false; 
+			var questionElement = document.createElement("question");
+			questionElement.id = "questionId";
+			var h1Element = document.createElement("h1");
+			h1Element.textContent = "Question "+questionNo+"/"+questions.length;
+			questionElement.appendChild(h1Element);
+			//document.body.appendChild(questionElement);
+			var questionContent = document.createElement("h1");
+			questionContent.textContent = questions[questionCount].id+". "+questions[questionCount].text;
+			questionElement.appendChild(questionContent);
+			for(var i=0;i<questions[questionCount].options.length;i++){
+				var options = document.createElement("li");
+				var text = document.createTextNode(questions[questionCount].options[i]);
+				var inputElement = document.createElement("input");
+				inputElement.setAttribute("type","radio");
+				inputElement.setAttribute("name",questions[questionCount].id);
+				inputElement.onclick = function(){
+					checkAnswer(questions[questionCount].answer,this.parentElement.textContent);
+				}
+				var nextButton = document.createElement("Button");
+				nextButton.innerHTML = "next";
+				nextButton.addEventListener("click",getStatus,false);
+				options.appendChild(inputElement);
+				options.appendChild(text);
+				questionElement.appendChild(options);
+			}
+			questionElement.appendChild(nextButton);
+			document.body.appendChild(questionElement);
+		
+
+			document.body.appendChild(questionElement);
+		}
+
+		function checkAnswer(correctOption, markOption){
+			if(correctOption == markOption){
+				score++;
+			}
+			else{
+				optionMark=true;
+			}
+		}
+
+		function getStatus(e){
+			if(optionMark==true){
+				var questionElement = document.querySelector("#questionId");
+				questionElement.remove();
+				questionCount++;
+				if(questionCount<=questions.length){
+					getQuestions();
+				} 
+				else{
+					getResult();
+				}
+			}
+			else{
+				alert("Please mark your choice");
+			}
+		}
+
+		function getResult(e){
+			var resultElement = document.createElement("h2");
+			resultElement.textContent = "Score = "+ score;
+			document.body.appendChild(resultElement);
+			var result = document.createElement("h2");	
+			if(score>=3){
+				result.textContent = "Result = Pass";
+			}
+			else{
+				result.textContent = "Result = Fail";	
+			}
+			document.body.appendChild(result);
+		}
+	</script>
+</body>
+</html>
