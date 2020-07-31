@@ -1,3 +1,7 @@
+#CompletedElement li {
+  text-decoration: line-through;
+}
+
 body{
   padding: 30px 40px;
   color: white;

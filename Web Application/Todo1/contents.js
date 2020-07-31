@@ -24,7 +24,7 @@ function display(){
 		var close = document.createTextNode("X");
 		button.appendChild(close);
 		button.onmousedown = function(){
-			remove(item)
+			remove(i)
 		};
 		buttons.push(button);
 		cell.innerHTML = lists[i];
