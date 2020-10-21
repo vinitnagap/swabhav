@@ -1,0 +1,1 @@
+Select * from emp order by ename ASC;

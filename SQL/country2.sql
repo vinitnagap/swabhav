@@ -1,0 +1,1 @@
+SELECT countries.COUNTRY_ID,countries.COUNTRY_NAME FROM countries INNER JOIN locations ON countries.COUNTRY_ID=locations.COUNTRY_ID WHERE locations.STATE_PROVINCE IS null

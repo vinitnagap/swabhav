@@ -1,0 +1,1 @@
+Select count(empno) from emp;

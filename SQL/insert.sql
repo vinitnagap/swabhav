@@ -1,0 +1,1 @@
+INSERT INTO `student` (`name`, `cgpa`) VALUES (Virat, 9);

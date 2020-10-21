@@ -1,0 +1,1 @@
+Select dname,ename from dept left join emp on emp.DEPTNO=dept.deptno;

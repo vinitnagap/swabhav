@@ -1,0 +1,1 @@
+ CALL salary_increment();

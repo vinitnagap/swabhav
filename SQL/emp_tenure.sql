@@ -1,0 +1,1 @@
+Select ename as name, datediff(curdate(),hiredate)/365 As "Tenure(Years)" from emp;

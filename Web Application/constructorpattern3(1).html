@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Customer(name,address){
+            this.name = name;
+            this.address = address;
+            var that = this;
+            this.show = function(){
+                setTimeout(function(){
+                    console.log(that);
+                    console.log("Name : "+that.name+" & Location : "+that.address);
+                },3000);
+            }
+        }
+        var c1 = new Customer("abc","Mumbai"); 
+        c1.show();
+    </script>
+</body>
+</html>

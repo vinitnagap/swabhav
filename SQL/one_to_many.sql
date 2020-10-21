@@ -1,0 +1,1 @@
+select * from student INNER JOIN orders ON orders.name = student.name;

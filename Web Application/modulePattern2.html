@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var service = (function(){
+            var serviceObj = {}
+            serviceObj.doTask1 = function(){
+                console.log("Doing Task 1");
+            }
+            serviceObj.doTask2 = function(){
+                console.log("Doing Task 2");
+            }
+            console.log("Object Created");
+            return serviceObj;
+        })();
+        service.doTask1();
+        service.doTask2();
+        service.doTask1();
+    </script>
+</body>
+</html>

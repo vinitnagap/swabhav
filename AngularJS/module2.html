@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-app="modA">
+    <script src="angular.js"></script>
+    <script>
+        angular.module("modB",[]).controller("ControllerB",function($rootScope,$scope){
+            console.log("Controller B Created");
+            $rootScope.company = "Swabhav Techlabs"
+            $scope.data = "Controller B says hello"
+        })
+        angular.module("modA",["modB"]).controller("ControllerA",function($rootScope,$scope){
+            console.log("Controller A Created");
+            console.log($rootScope.company);
+            $scope.data = "Controller A says hello"
+        })
+    </script>
+    <div ng-controller="ControllerB">
+        <h1>{{data}}</h1>
+    </div>
+    <div ng-controller="ControllerA">
+        <h1>{{data}}</h1>
+    </div>
+    <div>
+        {{company}}
+    </div>
+</body>
+</html>

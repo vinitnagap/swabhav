@@ -1,0 +1,1 @@
+Select * from emp where deptno=(Select deptno from emp where ename="Scott");

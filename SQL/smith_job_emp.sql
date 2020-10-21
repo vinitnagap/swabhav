@@ -1,0 +1,1 @@
+Select * from emp where job=(Select job from emp where ename="Smith");

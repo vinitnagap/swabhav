@@ -1,0 +1,1 @@
+Select avg(sal) from emp;

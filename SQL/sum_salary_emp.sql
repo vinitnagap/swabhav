@@ -1,0 +1,1 @@
+Select sum(sal) from emp;

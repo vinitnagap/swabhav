@@ -1,0 +1,1 @@
+Select dname,ename from emp right join dept on emp.DEPTNO=dept.deptno where ename is null;

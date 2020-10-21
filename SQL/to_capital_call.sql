@@ -1,0 +1,1 @@
+SELECT cust_name,toCapital(cust_name) FROM customer;

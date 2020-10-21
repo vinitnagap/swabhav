@@ -3,7 +3,8 @@ var pop = document.querySelector("#popBtn");
 const xhr = new XMLHttpRequest();
 
 fetch.addEventListener('click',fetchData);
-
+fetchData();
+console.log("End of program");
 function fetchData(){
     console.log("Fetch Button clicked");
 

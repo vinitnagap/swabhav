@@ -1,0 +1,1 @@
+Select t1.ename, t2.ename as boss from emp t1, emp t2 where t2.EMPNO = t1.MGR;

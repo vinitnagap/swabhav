@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+</head>
+<body>
+	<form action="auth.jsp" method="POST">
+		<div id=row1>
+		<p>Username : <input type="text" name="username" id="username" /></p>
+		</div>
+		<div id=row2>
+		<p>Password : <input type="password" name="password" id="password" /></p>
+		</div>
+		<button onclick="login()" >Submit</button>
+	</form>
+</body>
+	<script>
+		var inputName = document.querySelector("#username");
+		var inputPass = document.querySelector("#password");
+		function login() {
+			if(inputName.value == ''){
+				alert("Enter username");
+			}
+			if(inputPass.value == ''){
+				alert("Enter password");
+			}
+		}
+	</script>
+</html>

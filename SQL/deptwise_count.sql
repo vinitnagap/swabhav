@@ -1,0 +1,1 @@
+Select dname,count(*) from dept inner join emp where dept.DEPTNO=emp.deptno group by dname; 

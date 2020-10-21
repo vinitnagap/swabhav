@@ -1,0 +1,1 @@
+Select * from emp where comm is NULL;

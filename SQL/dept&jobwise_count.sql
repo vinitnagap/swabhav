@@ -1,0 +1,1 @@
+select deptno, job, count(job) as count from emp group by deptno,job; 

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function makeEmployee(){
+            var emp = {};
+            var _id,_name;
+            emp.setId = function(id){
+                _id = id;
+            }
+            emp.setName = function(name){
+                _name = name;
+            }
+            emp.getDetails = function(){
+                return "Id is "+_id+" & Name is "+_name;
+            }
+            return emp;
+        }
+
+        var e1 = makeEmployee();
+        e1.setId(101);
+        e1.setName("xyz");
+        console.log(e1.getDetails());
+    </script>
+</body>
+</html>

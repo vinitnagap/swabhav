@@ -1,0 +1,1 @@
+Select * from emp where sal between 2000 and 5000;
