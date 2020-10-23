@@ -2,10 +2,12 @@ package com.techlabs.web;
 
 import com.techlabs.model.*;
 import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
 import java.util.*;
 
+@WebServlet("/SelectBeer.do")
 public class BeerSelect extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
