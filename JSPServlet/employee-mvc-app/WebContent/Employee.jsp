@@ -18,6 +18,8 @@
 				<th>ID</th>
 				<th>Name</th>
 				<th>Role</th>
+				<th>Edit</th>
+				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,6 +30,12 @@
 				<td><%=employee.getId()%></td>
 				<td><%=employee.getName()%></td>
 				<td><%=employee.getRole()%></td>
+				<td><%
+					out.print("<a href='edit?id=" + employee.getId() + "'>Edit</a> ");
+				%><td>
+				<td><%
+					out.print("<a href='edit?name=" + employee.getName() + "'>Delete</a> ");
+				%><td>
 			</tr>
 			<%
 				}

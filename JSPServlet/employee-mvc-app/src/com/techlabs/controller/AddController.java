@@ -3,7 +3,6 @@ package com.techlabs.controller;
 import java.io.IOException;
 import java.util.UUID;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.techlabs.model.Employee;
-import com.techlabs.model.EmployeeData;
+import com.techlabs.service.EmployeeService;
 
 /**
  * Servlet implementation class AddController
@@ -37,13 +36,14 @@ public class AddController extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("Inside Add Controller");
 		UUID id = UUID.randomUUID();
+		request.setAttribute("id", id);
 		String name = request.getParameter("name");
 		String role = request.getParameter("role");
 		System.out.println(name + " " + role);
 		Employee employee = new Employee(id, name, role);
-		EmployeeData data = EmployeeData.getInstance();
-		data.addEmployee(employee);
-		System.out.println(data.employees.size());
+		EmployeeService service = EmployeeService.getInstance();
+		service.addEmployee(employee);
+		System.out.println(service.employees.size());
 		response.sendRedirect("EmployeeController");
 	}
 

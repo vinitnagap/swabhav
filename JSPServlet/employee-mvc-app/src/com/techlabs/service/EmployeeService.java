@@ -1,11 +1,13 @@
-package com.techlabs.model;
+package com.techlabs.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class EmployeeData {
-	private static EmployeeData instance;
+import com.techlabs.model.Employee;
+
+public class EmployeeService {
+	private static EmployeeService instance;
 	public List<Employee> employees;
 	Employee emp1 = new Employee(UUID.randomUUID(), "Virat", "Developer");
 	Employee emp2 = new Employee(UUID.randomUUID(), "Sachin", "Analyst");
@@ -13,18 +15,18 @@ public class EmployeeData {
 	Employee emp4 = new Employee(UUID.randomUUID(), "Ram", "Accountant");
 	Employee emp5 = new Employee(UUID.randomUUID(), "Gopal", "Manager");
 
-	private EmployeeData() {
+	private EmployeeService() {
 		employees = new ArrayList<Employee>();
-		employees.add(emp1);
-		employees.add(emp2);
-		employees.add(emp3);
-		employees.add(emp4);
-		employees.add(emp5);
+//		employees.add(emp1);
+//		employees.add(emp2);
+//		employees.add(emp3);
+//		employees.add(emp4);
+//		employees.add(emp5);
 	}
 
-	public static EmployeeData getInstance() {
+	public static EmployeeService getInstance() {
 		if (instance == null) {
-			instance = new EmployeeData();
+			instance = new EmployeeService();
 		}
 		return instance;
 	}
@@ -36,5 +38,18 @@ public class EmployeeData {
 
 	public void addEmployee(Employee emp) {
 		employees.add(emp);
+	}
+
+	public Employee get(String name) {
+		for (Employee employee : employees) {
+			if (employee.getName().equals(name)) {
+				return employee;
+			}
+		}
+		return null;
+	}
+
+	public void delete(String name) {
+		employees.remove(get(name));
 	}
 }

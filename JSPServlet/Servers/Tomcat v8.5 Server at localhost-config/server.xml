@@ -153,7 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="beer-app" path="/beer-app" reloadable="true" source="org.eclipse.jst.jee.server:beer-app"/><Context docBase="welcome-servlet" path="/welcome-servlet" reloadable="true" source="org.eclipse.jst.jee.server:welcome-servlet"/><Context docBase="employee-mvc-app" path="/employee-mvc-app" reloadable="true" source="org.eclipse.jst.jee.server:employee-mvc-app"/></Host>
+      <Context docBase="beer-app" path="/beer-app" reloadable="true" source="org.eclipse.jst.jee.server:beer-app"/><Context docBase="welcome-servlet" path="/welcome-servlet" reloadable="true" source="org.eclipse.jst.jee.server:welcome-servlet"/><Context docBase="employee-mvc-app" path="/employee-mvc-app" reloadable="true" source="org.eclipse.jst.jee.server:employee-mvc-app"/><Context docBase="login-app" path="/login-app" reloadable="true" source="org.eclipse.jst.jee.server:login-app"/><Context docBase="login2-app" path="/login2-app" reloadable="true" source="org.eclipse.jst.jee.server:login2-app"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.techlabs.model.Employee;
-import com.techlabs.model.EmployeeData;
+import com.techlabs.service.EmployeeService;
 
 /**
  * Servlet implementation class EmployeeController
@@ -35,8 +35,8 @@ public class EmployeeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		EmployeeData data = EmployeeData.getInstance();
-		List<Employee> employees = data.getEmployees();
+		EmployeeService service = EmployeeService.getInstance();
+		List<Employee> employees = service.getEmployees();
 		System.out.println(employees.size());
 		request.setAttribute("employees", employees);
 		RequestDispatcher rd = request.getRequestDispatcher("Employee.jsp");
