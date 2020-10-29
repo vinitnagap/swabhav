@@ -9,6 +9,7 @@
 <title>Employee Record</title>
 </head>
 <body>
+	<h1>Employee Details</h1>
 	<%
 		List<Employee> employees = (List<Employee>) request.getAttribute("employees");
 	%>
@@ -30,18 +31,24 @@
 				<td><%=employee.getId()%></td>
 				<td><%=employee.getName()%></td>
 				<td><%=employee.getRole()%></td>
-				<td><%
-					out.print("<a href='edit?id=" + employee.getId() + "'>Edit</a> ");
-				%><td>
-				<td><%
-					out.print("<a href='edit?name=" + employee.getName() + "'>Delete</a> ");
-				%><td>
+				<td><form action="EditController" method="GET">
+						<input type="hidden" id="emp" name="empId"
+							value="<%=employee.getId()%>"> <input type="submit"
+							value="Edit">
+					</form>
+				<td><form action="DeleteController" method="POST">
+						<input type="hidden" id="emp" name="empId"
+							value="<%=employee.getId()%>"> <input type="submit"
+							value="Delete">
+					</form>
 			</tr>
 			<%
 				}
 			%>
 		</tbody>
 	</table>
-	<a href="add.jsp">Add</a>
+	<form action="add" method="POST">
+		<input type="submit" value="Add">
+	</form>
 </body>
 </html>

@@ -40,16 +40,11 @@ public class EmployeeService {
 		employees.add(emp);
 	}
 
-	public Employee get(String name) {
+	public void deleteEmployee(String id) {
 		for (Employee employee : employees) {
-			if (employee.getName().equals(name)) {
-				return employee;
+			if (employee.getId().equals(id)) {
+				employees.remove(employee);
 			}
 		}
-		return null;
-	}
-
-	public void delete(String name) {
-		employees.remove(get(name));
 	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@page import="com.techlabs.model.Employee"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,17 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-		String setName = (String) request.getAttribute("name");
-	String setRole = (String) request.getAttribute("role");
-	int empId = (Integer) request.getAttribute("id");
-	%>
-	<form method="post" action="edit?id=<%=empId%>">
-		ID : <label name="id"><%=empId%></label><br> <br>
-		Name : <input type="text" name="name" value="<%=setName%>"><br>
-		<br> Role : <input type="text" name="Cgpi" value="<%=setRole%>"><br>
-		<br>
-		<button name="edit">Update</button>
+	<form action="EditController" method="POST">
+		<%
+			Employee employee = (Employee) request.getAttribute("editEmployee");
+		%>
+		<label>Name</label> <input type="text" name="Name" id="name"
+			value="<%=employee.getName()%>"><br> <label>Role</label>
+		<input type="text" name="Role" id="role"
+			value="<%=employee.getRole()%>"><br> <input
+			type="hidden" name="id" value="<%=employee.getId()%>"> <input
+			type="submit" value="Change">
 
 	</form>
 </body>

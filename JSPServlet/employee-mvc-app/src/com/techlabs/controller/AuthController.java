@@ -1,7 +1,6 @@
 package com.techlabs.controller;
 
 import java.io.IOException;
-import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.techlabs.model.Employee;
-import com.techlabs.service.EmployeeService;
+import com.techlabs.model.Login;
+import com.techlabs.service.LoginService;
 
 /**
- * Servlet implementation class AddController
+ * Servlet implementation class Auth2Controller
  */
-@WebServlet("/add")
-public class AddController extends HttpServlet {
+@WebServlet("/AuthController")
+public class AuthController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AddController() {
+	public AuthController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -35,17 +34,6 @@ public class AddController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Inside Add Controller");
-		UUID id = UUID.randomUUID();
-		request.setAttribute("id", id);
-		String name = request.getParameter("name");
-		String role = request.getParameter("role");
-		System.out.println(name + " " + role);
-		Employee employee = new Employee(id, name, role);
-		EmployeeService service = EmployeeService.getInstance();
-		service.addEmployee(employee);
-		System.out.println(service.employees.size());
-		response.sendRedirect("EmployeeController");
 	}
 
 	/**
@@ -55,9 +43,15 @@ public class AddController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher rd = request.getRequestDispatcher("add.jsp");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		RequestDispatcher rd;
+		LoginService service = LoginService.getInstance();
+		if (service.check(username, password)) {
+			rd = request.getRequestDispatcher("EmployeeController");
+		} else
+			rd = request.getRequestDispatcher("error.jsp");
 		rd.forward(request, response);
-
 	}
 
 }
