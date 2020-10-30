@@ -18,7 +18,8 @@
 				<font color="red"><span id="passwordFailed"></span></font>
 			</p>
 		</div>
-		<button onclick="login()">Submit</button>
+		<input type="button" name="guest" value="Guest">
+		<button onclick="login()">Login</button>
 	</form>
 </body>
 <script>
@@ -26,11 +27,11 @@
 	var inputPass = document.querySelector("#password");
 	function login() {
 		if (inputName.value == '') {
-			document.querySelector("#usernameFailed").innerHTML="*";
+			document.querySelector("#usernameFailed").innerHTML = "*";
 			event.preventDefault();
 		}
 		if (inputPass.value == '') {
-			document.querySelector("#passwordFailed").innerHTML="*";
+			document.querySelector("#passwordFailed").innerHTML = "*";
 			event.preventDefault();
 		}
 	}

@@ -1,6 +1,7 @@
 package com.techlabs.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,20 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.techlabs.model.Login;
-import com.techlabs.service.LoginService;
+import com.techlabs.model.Employee;
+import com.techlabs.service.EmployeeService;
 
 /**
- * Servlet implementation class Auth2Controller
+ * Servlet implementation class GuestController
  */
-@WebServlet("/AuthController")
-public class AuthController extends HttpServlet {
+@WebServlet("/GuestController")
+public class GuestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AuthController() {
+	public GuestController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,6 +35,12 @@ public class AuthController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		EmployeeService service = EmployeeService.getInstance();
+		List<Employee> employees = service.getEmployees();
+		System.out.println(employees.size());
+		request.setAttribute("employees", employees);
+		RequestDispatcher rd = request.getRequestDispatcher("Guest.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -43,18 +50,8 @@ public class AuthController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		RequestDispatcher rd;
-		LoginService service = LoginService.getInstance();
-		if (service.check(username, password)) {
-			rd = request.getRequestDispatcher("EmployeeController");
-		} else if (username.equals("guest")) {
-			rd = request.getRequestDispatcher("GuestController");
-		}
-
-		else
-			rd = request.getRequestDispatcher("error.jsp");
+		doGet(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher("Guest.jsp");
 		rd.forward(request, response);
 	}
 

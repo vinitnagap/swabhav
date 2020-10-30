@@ -17,11 +17,11 @@ public class EmployeeService {
 
 	private EmployeeService() {
 		employees = new ArrayList<Employee>();
-//		employees.add(emp1);
-//		employees.add(emp2);
-//		employees.add(emp3);
-//		employees.add(emp4);
-//		employees.add(emp5);
+		employees.add(emp1);
+		employees.add(emp2);
+		employees.add(emp3);
+		employees.add(emp4);
+		employees.add(emp5);
 	}
 
 	public static EmployeeService getInstance() {
