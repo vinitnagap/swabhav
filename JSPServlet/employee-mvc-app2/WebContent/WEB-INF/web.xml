@@ -1,0 +1,14 @@
+
+<web-app>
+	<filter>
+		<filter-name>Sample Filter</filter-name>
+		<filter-class>com.techlabs.controller.SampleFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Sample Filter</filter-name>
+		<url-pattern>/AddController</url-pattern>
+		<url-pattern>/EditController</url-pattern>
+		<url-pattern>/DeleteController</url-pattern>
+		  <dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+</web-app> 

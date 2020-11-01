@@ -10,10 +10,7 @@
 <body>
 	<form action="EditController" method="POST">
 		<%
-			if (session.getAttribute("username") == null) {
-			response.sendRedirect("login.html");
-		}
-		Employee employee = (Employee) request.getAttribute("editEmployee");
+			Employee employee = (Employee) request.getAttribute("editEmployee");
 		%>
 		<label>Name</label> <input type="text" name="Name" id="name"
 			value="<%=employee.getName()%>"><br> <label>Role</label>

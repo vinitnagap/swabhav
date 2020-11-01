@@ -1,6 +1,7 @@
 package com.techlabs.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,47 +9,47 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.techlabs.model.Login;
-import com.techlabs.service.LoginService;
+import com.techlabs.service.EmployeeService;
 
 /**
- * Servlet implementation class Auth2Controller
+ * Servlet implementation class DeleteController
  */
-@WebServlet("/AuthController")
-public class AuthController extends HttpServlet {
+@WebServlet("/DeleteController")
+public class DeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AuthController() {
+	public DeleteController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher("/EmployeeController");
+		rd.forward(request, response);
 
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Inside AuthController");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		HttpSession session = request.getSession();
-		RequestDispatcher rd;
-		LoginService service = LoginService.getInstance();
-		if (service.check(username, password)) {
-
-			session.setAttribute("username", "admin");
-
-		}
-		rd = request.getRequestDispatcher("EmployeeController");
-		rd.forward(request, response);
+		// TODO Auto-generated method stub
+		doGet(request, response);
+		String id = request.getParameter("empId");
+		EmployeeService es = EmployeeService.getInstance();
+		es.deleteEmployee(id);
 	}
+
 }

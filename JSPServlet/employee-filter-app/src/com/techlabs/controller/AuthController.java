@@ -31,24 +31,24 @@ public class AuthController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher("EmployeeController");
+		rd.forward(request, response);
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Inside AuthController");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
 		RequestDispatcher rd;
 		LoginService service = LoginService.getInstance();
 		if (service.check(username, password)) {
-
 			session.setAttribute("username", "admin");
-
+			rd = request.getRequestDispatcher("EmployeeController");
+		} else {
+			rd = request.getRequestDispatcher("error.jsp");
 		}
-		rd = request.getRequestDispatcher("EmployeeController");
 		rd.forward(request, response);
 	}
 }

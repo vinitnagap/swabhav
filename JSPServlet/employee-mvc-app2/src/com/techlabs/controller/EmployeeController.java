@@ -35,6 +35,7 @@ public class EmployeeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("Inside Employee Controller");
 		EmployeeService service = EmployeeService.getInstance();
 		List<Employee> employees = service.getEmployees();
 		System.out.println(employees.size());

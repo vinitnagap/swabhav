@@ -1,7 +1,7 @@
 package com.techlabs.controller;
 
 import java.io.IOException;
-import java.util.UUID;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,16 +14,16 @@ import com.techlabs.model.Employee;
 import com.techlabs.service.EmployeeService;
 
 /**
- * Servlet implementation class AddController
+ * Servlet implementation class EmployeeController
  */
-@WebServlet("/add")
-public class AddController extends HttpServlet {
+@WebServlet("/EmployeeController")
+public class EmployeeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AddController() {
+	public EmployeeController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -35,17 +35,12 @@ public class AddController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Inside Add Controller");
-		UUID id = UUID.randomUUID();
-		request.setAttribute("id", id);
-		String name = request.getParameter("name");
-		String role = request.getParameter("role");
-		System.out.println(name + " " + role);
-		Employee employee = new Employee(id, name, role);
 		EmployeeService service = EmployeeService.getInstance();
-		service.addEmployee(employee);
-		System.out.println(service.employees.size());
-		response.sendRedirect("EmployeeController");
+		List<Employee> employees = service.getEmployees();
+		//System.out.println(employees.size());
+		request.setAttribute("employees", employees);
+		RequestDispatcher rd = request.getRequestDispatcher("Employee.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -55,10 +50,7 @@ public class AddController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Inside Add Controller");
-		RequestDispatcher rd = request.getRequestDispatcher("add.jsp");
-		rd.forward(request, response);
-
+		doGet(request, response);
 	}
 
 }

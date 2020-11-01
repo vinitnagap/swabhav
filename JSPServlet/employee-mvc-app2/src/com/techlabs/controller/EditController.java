@@ -35,6 +35,7 @@ public class EditController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("Inside Edit Controller");
 		PrintWriter out = response.getWriter();
 		String id = (String) request.getParameter("empId");
 		EmployeeService service = EmployeeService.getInstance();
@@ -56,6 +57,7 @@ public class EditController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("Inside Edit Controller");
 		String name = request.getParameter("Name");
 		String role = request.getParameter("Role");
 		String id = request.getParameter("id");

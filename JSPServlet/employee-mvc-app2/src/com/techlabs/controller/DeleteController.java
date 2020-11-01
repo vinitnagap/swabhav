@@ -34,6 +34,7 @@ public class DeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("Inside Delete Controller");
 		RequestDispatcher rd = request.getRequestDispatcher("/EmployeeController");
 		rd.forward(request, response);
 
@@ -50,6 +51,7 @@ public class DeleteController extends HttpServlet {
 		String id = request.getParameter("empId");
 		EmployeeService es = EmployeeService.getInstance();
 		es.deleteEmployee(id);
+
 	}
 
 }

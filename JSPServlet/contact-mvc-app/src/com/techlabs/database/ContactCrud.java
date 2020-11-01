@@ -14,7 +14,7 @@ public class ContactCrud {
 	private static ContactCrud instance;
 
 	private ContactCrud() {
-
+		System.out.println("Inside Contact Service");
 	}
 
 	public static ContactCrud getInstance() {

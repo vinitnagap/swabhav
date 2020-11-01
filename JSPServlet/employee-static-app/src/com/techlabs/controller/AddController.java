@@ -44,7 +44,7 @@ public class AddController extends HttpServlet {
 		Employee employee = new Employee(id, name, role);
 		EmployeeService service = EmployeeService.getInstance();
 		service.addEmployee(employee);
-		System.out.println(service.employees.size());
+		// System.out.println(service.employees.size());
 		response.sendRedirect("EmployeeController");
 	}
 
@@ -55,7 +55,6 @@ public class AddController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Inside Add Controller");
 		RequestDispatcher rd = request.getRequestDispatcher("add.jsp");
 		rd.forward(request, response);
 
