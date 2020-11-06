@@ -1,4 +1,4 @@
-package com.techlabs.database;
+package com.techlabs.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,16 +10,16 @@ import java.util.List;
 
 import com.techlabs.model.Contact;
 
-public class ContactCrud {
-	private static ContactCrud instance;
+public class ContactService {
+	private static ContactService instance;
 
-	private ContactCrud() {
+	private ContactService() {
 		System.out.println("Inside Contact Service");
 	}
 
-	public static ContactCrud getInstance() {
+	public static ContactService getInstance() {
 		if (instance == null) {
-			instance = new ContactCrud();
+			instance = new ContactService();
 		}
 		return instance;
 	}

@@ -14,16 +14,16 @@ import com.techlabs.model.Employee;
 import com.techlabs.service.EmployeeService;
 
 /**
- * Servlet implementation class GuestController
+ * Servlet implementation class SearchController
  */
-@WebServlet("/GuestController")
-public class GuestController extends HttpServlet {
+@WebServlet("/SearchController")
+public class SearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public GuestController() {
+	public SearchController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -35,12 +35,7 @@ public class GuestController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		EmployeeService service = EmployeeService.getInstance();
-		List<Employee> employees = service.getEmployees();
-		System.out.println(employees.size());
-		request.setAttribute("employees", employees);
-		RequestDispatcher rd = request.getRequestDispatcher("Guest.jsp");
-		rd.forward(request, response);
+		doPost(request, response);
 	}
 
 	/**
@@ -49,9 +44,12 @@ public class GuestController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-		RequestDispatcher rd = request.getRequestDispatcher("Guest.jsp");
+		String name = request.getParameter("search");
+		EmployeeService service = EmployeeService.getInstance();
+		List<Employee> employees = service.getEmployees(name);
+		System.out.println(employees.size());
+		request.setAttribute("employees", employees);
+		RequestDispatcher rd = request.getRequestDispatcher("Employee.jsp");
 		rd.forward(request, response);
 	}
 

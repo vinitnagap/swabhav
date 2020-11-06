@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-app="modA">
+    <script src="angular.js"></script>
+    <script src="script.js"></script>
+    <div>
+        <p>Enter number = <input type="number" ng-model="number"></p>
+        <button ng-click="getSquare();getCube()">Calculate</button>
+    </div>
+    <div ng-controller="SquareController" ng-show="square">
+        <h1>Square = {{getValue}}</h1>
+    </div>
+    <div ng-controller="CubeController" ng-show="cube">
+        <h1>Cube = {{getValue}}</h1>
+    </div> 
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <style>
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body ng-app="modA">
+    <div ng-controller="controllerA">
+        <form ng-submit="todoAdd()">
+            <input type="text" ng-model="todoInput" size="80" placeholder="Add Task">
+            <input type="submit" value="+">
+        </form>
+        <table>
+            <thead>
+                <th>Done</th>
+                <th>Task</th>
+                <th>Date</th>
+                <th>Remove</th>
+            </thead>
+            <tbody>
+            
+                <tr ng-repeat="task in todoList track by $index">
+                    <td><input type="checkbox" ng-model="task.done" ng-change="strike()" class="check"></td>
+                    <td ng-style="completed">{{task.todoText}}</td>
+                    <td ng-bind="task.date" class="date"></td>
+                    <td><button ng-click="remove(task)">Remove</button></td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
+    </div>
+    <script src="angular.js"></script> 
+    <script>
+        angular.module("modA",[]).controller("controllerA",["$scope",function(t){if(t.currentDate=new Date,"undefined"!=typeof Storage){var o=localStorage.getItem("tasks");t.todoList=null!=o?JSON.parse(o):[]}t.strike=function(){t.completed={"text-decoration":"line-through"}},t.update=function(){localStorage.setItem("tasks",JSON.stringify(t.todoList))},t.todoAdd=function(){t.todoList.push({todoText:t.todoInput,done:!1,date:t.currentDate}),t.update(),t.todoInput=""},t.remove=function(o){var e=t.todoList.indexOf(o);confirm("Sure Delete")&&(t.todoList.splice(e,1),t.update())}}]);
+
+    </script>
+    </body>
+    </html>
+    

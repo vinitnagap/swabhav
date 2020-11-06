@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-app="modA">
+    <div ng-controller="controllerA">
+        <section>
+            <button ng-click="load()">Load Students</button><br>
+            <div ng-repeat="student in students">
+                {{student.id}}<br>
+                {{student.name}}<br>
+                <img ng-src="{{student.img}}">
+            </div>
+        </section>
+    </div>
+    <script src="angular.js"></script>
+    <script>
+        angular.module("modA",[]).controller("controllerA",function($scope) {
+            $scope.load=function(){
+                $scope.students=[{
+                    id:1,
+                    name:"sachin",
+                    img:"student.png"
+                },
+                {
+                    id:2,
+                    name:"virat",
+                    img:"student.png"
+                }]
+            }
+        })
+    </script>
+</body>
+</html>

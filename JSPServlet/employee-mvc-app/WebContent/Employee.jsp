@@ -9,6 +9,10 @@
 <title>Employee Record</title>
 </head>
 <body>
+	<form action="SearchController" method="post">
+		<input type="text" name="search">
+		<button>Search</button>
+	</form>
 	<h1>Employee Details</h1>
 	<%
 		List<Employee> employees = (List<Employee>) request.getAttribute("employees");

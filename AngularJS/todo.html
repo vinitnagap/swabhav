@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+</head>
+<body ng-app="modA">
+    <div ng-controller="controllerA">
+        <form ng-submit="todoAdd()">
+            <input type="text" ng-model="todoInput" size="80" placeholder="Add Task">
+            <input type="submit" value="+">
+        </form>
+        <div ng-repeat="task in todoList">
+            <span ng-bind="task"></span>
+    </div>
+    <script src="angular.js"></script> 
+   <script>
+       angular.module("modA",[]).controller("controllerA",function($scope){
+            $scope.todoList = [];
+
+            $scope.todoAdd = function() {
+                $scope.todoList.push($scope.todoInput);
+                $scope.todoInput = "";
+            };
+        })
+   </script>
+</body>
+</html>

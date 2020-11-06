@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-app="modA">
+    <script src="angular.js"></script>
+    <div ng-controller="ControllerA">
+        Roll No = <input type="text" ng-model="student.rollno">
+        Name = <input type="text" ng-model="student.name">
+        CGPA = <input type="text" ng-model="student.cgpa">
+        <p>{{student.rollno}}</p>
+        <p>{{student.name}}</p>
+        <p>{{student.cgpa}}</p>
+    </div>
+    
+    <script>
+        angular.module("modA",[]).controller("ControllerA",function($scope){
+            $scope.student={
+                rollno : 1,
+                name : "Ram",
+                cgpa : 8.1
+            }
+        });
+    </script>
+</body>
+</html>

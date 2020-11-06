@@ -1,4 +1,4 @@
-package com.techlabs.database;
+package com.techlabs.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,24 +8,24 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.techlabs.model.Employee;
+import com.techlabs.model.Contact;
 
-public class EmployeeCrud {
-	private static EmployeeCrud instance;
+public class ContactService {
+	private static ContactService instance;
 
-	private EmployeeCrud() {
-
+	private ContactService() {
+		System.out.println("Inside Contact Service");
 	}
 
-	public static EmployeeCrud getInstance() {
+	public static ContactService getInstance() {
 		if (instance == null) {
-			instance = new EmployeeCrud();
+			instance = new ContactService();
 		}
 		return instance;
 	}
 
-	public List<Employee> getAllEmployees() {
-		List<Employee> employees = new ArrayList<Employee>();
+	public List<Contact> getAllContacts() {
+		List<Contact> contacts = new ArrayList<Contact>();
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet res = null;
@@ -35,12 +35,12 @@ public class EmployeeCrud {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swabhav?user=root&password=root");
 			stmt = conn.createStatement();
-			res = stmt.executeQuery("Select * from employee");
+			res = stmt.executeQuery("Select * from contact");
 
 			while (res.next()) {
-				System.out.println(res.getInt(1) + res.getString(2) + res.getString(3));
+				System.out.println(res.getString(1) + res.getString(2) + res.getString(3) + res.getString(4));
 
-				employees.add(new Employee(res.getInt(1), res.getString(2), res.getString(3)));
+				contacts.add(new Contact(res.getString(1), res.getString(2), res.getString(3), res.getString(4)));
 			}
 			conn.close();
 		} catch (SQLException e) {
@@ -51,10 +51,10 @@ public class EmployeeCrud {
 			e.printStackTrace();
 		}
 
-		return employees;
+		return contacts;
 	}
 
-	public void updateEmployee(int id, String name, String role) {
+	public void updateContact(String fname, String lname, String phone, String email) {
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet res = null;
@@ -63,8 +63,8 @@ public class EmployeeCrud {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swabhav?user=root&password=root");
 			stmt = conn.createStatement();
-			int rows = stmt
-					.executeUpdate("update employee set name='" + name + "',role='" + role + "' where id='" + id + "'");
+			int rows = stmt.executeUpdate(
+					"update contact set phone='" + phone + "',emailid='" + email + "' where fname='" + fname + "'");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -75,7 +75,7 @@ public class EmployeeCrud {
 
 	}
 
-	public void insertEmployee(String name, String role) {
+	public void insertContact(String fname, String lname, String phone, String email) {
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet res = null;
@@ -84,7 +84,8 @@ public class EmployeeCrud {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swabhav?user=root&password=root");
 			stmt = conn.createStatement();
 			System.out.println("Inside Insert");
-			int rows = stmt.executeUpdate("insert into employee(name,role) values('" + name + "','" + role + "')");
+			int rows = stmt.executeUpdate(
+					"insert into contact values('" + fname + "','" + lname + "','" + phone + "','" + email + "')");
 			conn.close();
 
 		} catch (SQLException e) {
@@ -97,7 +98,7 @@ public class EmployeeCrud {
 
 	}
 
-	public Employee getEmployeeById(int id) {
+	public Contact getContactByFname(String fname) {
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet res = null;
@@ -107,11 +108,11 @@ public class EmployeeCrud {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swabhav?user=root&password=root");
 			stmt = conn.createStatement();
-			res = stmt.executeQuery("Select * from employee where id='" + id + "'");
+			res = stmt.executeQuery("Select * from contact where fname='" + fname + "'");
 
 			while (res.next()) {
-				System.out.println(res.getInt(1) + res.getString(2) + res.getString(3));
-				return new Employee(res.getInt(1), res.getString(2), res.getString(3));
+				System.out.println(res.getString(1) + res.getString(2) + res.getString(3) + res.getString(4));
+				return new Contact(res.getString(1), res.getString(2), res.getString(3), res.getString(4));
 			}
 
 			conn.close();
@@ -126,7 +127,7 @@ public class EmployeeCrud {
 		return null;
 	}
 
-	public void deleteEmployee(int id) {
+	public void deleteContact(String fname) {
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet res = null;
@@ -134,8 +135,8 @@ public class EmployeeCrud {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swabhav?user=root&password=root");
 			stmt = conn.createStatement();
-			System.out.println("Delete Employee");
-			int rows = stmt.executeUpdate("delete from employee where id ='" + id + "'");
+			System.out.println("Delete Contact");
+			int rows = stmt.executeUpdate("delete from contact where fname ='" + fname + "'");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

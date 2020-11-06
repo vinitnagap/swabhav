@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.techlabs.database.EmployeeCrud;
 import com.techlabs.model.Employee;
+import com.techlabs.service.EmployeeService;
 
 /**
  * Servlet implementation class EditController
@@ -36,7 +36,7 @@ public class EditController extends HttpServlet {
 		// TODO Auto-generated method stub
 		int id = Integer.parseInt(request.getParameter("empId"));
 		System.out.println(id);
-		EmployeeCrud database = EmployeeCrud.getInstance();
+		EmployeeService database = EmployeeService.getInstance();
 		Employee employee = database.getEmployeeById(id);
 		if (employee.getId() == id) {
 			request.setAttribute("editEmployee", employee);
@@ -54,7 +54,7 @@ public class EditController extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		String name = request.getParameter("name");
 		String role = request.getParameter("role");
-		EmployeeCrud database = EmployeeCrud.getInstance();
+		EmployeeService database = EmployeeService.getInstance();
 		database.updateEmployee(id, name, role);
 		;
 		RequestDispatcher rd = request.getRequestDispatcher("EmployeeController");

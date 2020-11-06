@@ -47,4 +47,16 @@ public class EmployeeService {
 			}
 		}
 	}
+
+	public List<Employee> getEmployees(String name) {
+		System.out.println("Inside Search");
+		List<Employee> emps = new ArrayList<Employee>();
+		for (Employee employee : employees) {
+			if (employee.getName().equals(name)) {
+				System.out.println(employee.getName());
+				emps.add(employee);
+			}
+		}
+		return emps;
+	}
 }

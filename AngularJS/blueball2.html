@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Ball Game</title>
+    <style>
+        .btn{    
+          border-radius:50%;
+          font-size: 30px;
+        }
+        .btn.red{
+          background-color:red;
+          border-radius:50%;
+          font-size: 30px;
+        }
+        .btn.blue{
+          background-color:blue;
+          border-radius:50%;
+          font-size: 30px;
+        }
+        .btn.green{
+            background-color:green;
+            border-radius:50%;
+            font-size: 30px;
+        }
+        .btn.active { background-color: white; }
+    </style>
+</head>
+<body ng-app="modA">
+    <div ng-controller="controllerA">
+        <div ng-show="ruleVisible">
+            <h1><b><font color="Blue">Blue Ball Game</font> </b></h1>
+            <h3><u><b>Rules</b></u></h3>
+            <ol style="text-align: left">
+                <li><b>Please read the rules of game carefully...</b></li>                        
+                <li><b>Press 'START' to start the Game</b></li>
+                </ol>
+            <ul style="text-align: left">
+                <li>If you guessed ball and the location is frontside of blueball then that ball will become<font color="Green"> Green </font>color ball</li>
+                <li>If you guessed ball and the location is backside of blueball then  that ball will become<font color="Red"> Red</font> color ball</li>
+                <li>If you guessed the right ball then you'll win the game</li>
+            </ul>
+            <button id="startBtn" ng-click=start()>Start</button>
+        </div>
+        
+        <div ng-show="IsVisible" style="visibility:visible " id="play">      
+            <p style="text-align: right"> Attempts: <span id="Attempts Left = ">{{attemptsLeft}}</span></p>
+            <button class ="btn" ng-repeat="button in buttons" ng-class="{'blue':(activeBtn==button.value && activeBtn==blueButton),'green':(activeBtn==button.value && activeBtn>blueButton),'red':(activeBtn==button.value && activeBtn<blueButton)}"  ng-disabled=dsblBtn id='{{button.id}}' ng-click="colorButton(button.value);" >{{button.value}}</button>
+            <p>{{result}}</p>
+            <button ng-show="restart" ng-click=rules()>Restart</button>
+
+        </div>
+    </div>
+    <script src="angular.js"></script>
+    <script>
+        angular.module("modA",[]).controller("controllerA",function($scope){
+            $scope.IsVisible=false;
+            $scope.ruleVisible=true;
+            $scope.start = function(){
+                $scope.restart = false;
+                $scope.result="";
+                $scope.IsVisible=true;
+                $scope.ruleVisible=false;
+                var attempts=5;
+                $scope.dsblBtn = false;
+                $scope.blueButton=Math.floor((Math.random()*50)+1);
+                console.log($scope.blueButton);
+
+                $scope.attemptsLeft = attempts; 
+                $scope.buttons = []
+                for(var count=1; count<=50; count++){
+                    $scope.buttons.push({ id: 'btn'+count, value: count });
+                }
+                $scope.activeBtn = undefined;
+                $scope.colorButton = function(value){
+                    $scope.activeBtn = value;
+                    console.log($scope.activeBtn);
+                    $scope.attemptsLeft--;
+                    if($scope.blueButton==$scope.activeBtn){
+                        $scope.result="Congratulations you have won"
+                        $scope.dsblBtn = true;
+                    }
+                    if($scope.attemptsLeft==0){
+                        $scope.activeBtn = $scope.blueButton
+                        $scope.result="Sorry, you have lost"
+                        $scope.dsblBtn = true;
+                        $scope.restart = true;
+                    }
+                }
+            }
+            $scope.rules = function(){
+                $scope.IsVisible=false;
+                $scope.ruleVisible=true;
+            }
+        })
+    </script>
+</body>

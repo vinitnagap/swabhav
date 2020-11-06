@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.techlabs.database.EmployeeCrud;
 import com.techlabs.model.Employee;
+import com.techlabs.service.EmployeeService;
 
 /**
  * Servlet implementation class EmployeeController
@@ -35,7 +35,7 @@ public class EmployeeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		EmployeeCrud database = EmployeeCrud.getInstance();
+		EmployeeService database = EmployeeService.getInstance();
 		List<Employee> details = database.getAllEmployees();
 		System.out.println(details);
 		request.setAttribute("employees", details);

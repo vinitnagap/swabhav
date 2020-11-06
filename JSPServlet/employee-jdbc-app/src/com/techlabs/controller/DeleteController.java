@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.techlabs.database.EmployeeCrud;
+import com.techlabs.service.EmployeeService;
 
 /**
  * Servlet implementation class DeleteController
@@ -45,7 +45,7 @@ public class DeleteController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		EmployeeCrud database = EmployeeCrud.getInstance();
+		EmployeeService database = EmployeeService.getInstance();
 		int id = Integer.parseInt(request.getParameter("empId"));
 		System.out.println(id);
 		database.deleteEmployee(id);

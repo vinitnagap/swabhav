@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-app="modA">
+    
+    <script src="angular.js"></script>
+    <div ng-controller="controllerA">
+        <section>
+            <button type="button"  ng-click="load()" >Show</button><br>
+            <div ng-repeat="student in students">
+                {{student.id}}<br>
+                {{student.name}}<br>
+                {{student.cgpa| grade}}
+            </div>
+        </section>
+    </div>
+
+    <script>
+        angular.module('modA', []).filter("grade",function(){
+            return function(cgpa){
+                if(cgpa >= 9.0)
+                return "A"
+                if(cgpa <9.0 && cgpa >= 8.0)
+                return "B"
+                else
+                return "C"
+            }
+        })
+        .controller('controllerA', function ($scope) {
+            $scope.load=function(){
+                $scope.students=[{
+                    id:1,
+                    name:"Sachin",
+                    cgpa:7.0
+                },
+                {
+                    id:2,
+                    name:"Virat",
+                    cgpa:9.0
+                }
+                ]
+            }
+         });
+    </script>
+</body>
+</html>
