@@ -5,6 +5,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<% 
+		String path = (String)request.getAttribute("url");
+	%>
 	<form method="POST" action="AuthController">
 		<div id=row1>
 			<p>

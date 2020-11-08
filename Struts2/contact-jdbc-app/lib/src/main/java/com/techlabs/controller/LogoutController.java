@@ -33,11 +33,11 @@ public class LogoutController extends HttpServlet {
 		HttpSession session = request.getSession();
 		if (session.getAttribute("username") != null) {
 			session.removeAttribute("username");
-			RequestDispatcher rd = request.getRequestDispatcher("login.html");
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
 		}
 		else {
-			RequestDispatcher rd = request.getRequestDispatcher("login.html");
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
 		}
 		

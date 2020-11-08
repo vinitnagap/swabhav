@@ -16,4 +16,18 @@ id="WebApp_ID" version="3.0">
 <servlet-name>home</servlet-name>
 <url-pattern>/home</url-pattern>
 </servlet-mapping>
+
+<filter>
+		<filter-name>MyFilter</filter-name>
+		<filter-class>com.techlabs.controller.LoginFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>MyFilter</filter-name>
+		<url-pattern>/AddController</url-pattern>
+		<url-pattern>/DeleteController</url-pattern>
+		<url-pattern>/EditController</url-pattern>
+		<url-pattern>/ContactController</url-pattern>
+	<!-- 	<url-pattern>/AuthController</url-pattern> -->
+	</filter-mapping>
 </web-app>

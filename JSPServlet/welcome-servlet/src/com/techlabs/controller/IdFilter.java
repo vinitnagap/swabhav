@@ -30,6 +30,7 @@ public class IdFilter implements Filter {
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
+		System.out.println("Inside Filter");
 		HttpServletRequest req = (HttpServletRequest) request;
 		PrintWriter out = response.getWriter();
 		int id = Integer.parseInt(req.getParameter("id"));

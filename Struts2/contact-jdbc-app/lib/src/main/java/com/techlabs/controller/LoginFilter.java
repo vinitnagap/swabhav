@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter(value = { "/AddController", "/DeleteController", "/EditController", "/ContactController" })
+//@WebFilter(value = { "/AddController", "/DeleteController", "/EditController", "/ContactController" })
 public class LoginFilter implements Filter {
 
 	/**
@@ -41,13 +42,18 @@ public class LoginFilter implements Filter {
 		System.out.println("Inside Login Filter");
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
+		System.out.println(req.getRequestURI().substring(req.getContextPath().length()));
+		
 
 		HttpSession session = req.getSession();
 		if (session.getAttribute("username") != null) {
 			chain.doFilter(request, response);
 		} else {
 			System.out.println("Hello");
-			res.sendRedirect("login.html");
+			//res.sendRedirect("login.html");
+			request.setAttribute("url", req.getRequestURI().substring(req.getContextPath().length()));
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			rd.forward(request, response);
 		}
 
 	}

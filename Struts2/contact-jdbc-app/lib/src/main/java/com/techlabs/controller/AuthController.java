@@ -44,6 +44,9 @@ public class AuthController extends HttpServlet {
 		LoginService service = LoginService.getInstance();
 		if (service.check(username, password)) {
 			session.setAttribute("username", "admin");
+			if(request.getParameter("path") !=null) {
+				response.sendRedirect(request.getParameter("path"));
+			}
 			rd = request.getRequestDispatcher("ContactController");
 		} else {
 			rd = request.getRequestDispatcher("error.jsp");

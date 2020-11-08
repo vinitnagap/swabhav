@@ -15,8 +15,9 @@
 	</form>
 	<%
 		if (session.getAttribute("username") == null) {
-			response.sendRedirect("login.html");
+			response.sendRedirect("login.jsp");
 		}
+		
 		List<Contact> contacts = (List<Contact>) request.getAttribute("contact");
 	%>
 	<table border="1" style="width: 50%" height="50%">

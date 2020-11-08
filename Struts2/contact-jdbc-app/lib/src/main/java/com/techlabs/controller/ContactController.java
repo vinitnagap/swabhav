@@ -36,9 +36,10 @@ public class ContactController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println(request.getRequestURI());
 		ContactService database = ContactService.getInstance();
 		List<Contact> details = database.getAllContacts();
-		System.out.println(details);
+		//System.out.println(details);
 		request.setAttribute("contact", details);
 		RequestDispatcher rd = request.getRequestDispatcher("contact.jsp");
 		rd.forward(request, response);
