@@ -13,13 +13,14 @@
 <title>Register</title>
 </head>
 <body>
-	<s:form action="registerprocess">
+	<s:form action="registerDo">
 		<s:textfield name="firstName" label="First Name"></s:textfield>
 		<s:textfield name="lastName" label="Last Name"></s:textfield>
 		<s:textfield name="age" label="Age"></s:textfield>
 		<s:textfield name="emailId" label="Email-id"></s:textfield>
 		<s:password name="password" label="Password"></s:password>
 		<s:submit value="Register"></s:submit>
+		
 		<!--  	<s:property value="message" /> -->
 	</s:form>
 </body>

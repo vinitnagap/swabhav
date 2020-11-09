@@ -11,6 +11,7 @@ public class BrowseAction implements Action {
 
 	@Override
 	public String execute() throws Exception {
+		System.out.println("Inside Browse Action");
 		// TODO Auto-generated method stub
 		if (hours > 1 && hours < 12) {
 			this.msg = "Good Morning";

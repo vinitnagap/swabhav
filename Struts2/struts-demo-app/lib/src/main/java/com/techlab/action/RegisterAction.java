@@ -1,11 +1,12 @@
 package com.techlab.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+import com.techlab.viewmodel.RegisterVM;
 
-public class RegisterAction extends ActionSupport {
+public class RegisterAction extends ActionSupport implements ModelDriven<RegisterVM> {
 
-	private int age;
-	private String firstName, lastName, emailId, password;
+	private RegisterVM vm;
 
 	@Override
 	public String execute() {
@@ -14,60 +15,45 @@ public class RegisterAction extends ActionSupport {
 
 	@Override
 	public void validate() {
-		if (firstName.equals("")) {
+		if (vm.getFirstName().equals("")) {
 			addFieldError("firstName", "Enter First Name");
 		}
-		if (lastName.equals("")) {
+		if (vm.getLastName().equals("")) {
 			addFieldError("lastName", "Enter Last Name");
 		}
-		if (emailId.equals("")) {
+		if (vm.getEmailId().equals("")) {
 			addFieldError("emailId", "Enter Email-id");
 		}
-		if (password.equals("")) {
+		if (vm.getPassword().equals("")) {
 			addFieldError("password", "Enter Password");
 		}
-		if (age == 0) {
+		if (vm.getAge() == 0) {
 			addFieldError("age", "Enter Age");
 		}
 	}
 
-	public int getAge() {
-		return age;
+	@Override
+	public RegisterVM getModel() {
+		// TODO Auto-generated method stub
+		vm = new RegisterVM();
+		return vm;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public RegisterVM getUser() {
+		return vm;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public void setUser(RegisterVM user) {
+		this.vm = user;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getEmailId() {
-		return emailId;
-	}
-
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public String registerDo() {
+		String detailsMessage = "Registration Complete! Your Details are as follows :";
+		String nameMessgae = "Name = " + vm.getFirstName() + " " + vm.getLastName();
+		String ageMessage = "Age = " + vm.getAge();
+		String emailMessage = "Email-id = " + vm.getEmailId();
+		detailsMessage += nameMessgae + "\n" + ageMessage + "\n" + emailMessage;
+		vm.setMessage(detailsMessage);
+		return "success";
 	}
 }

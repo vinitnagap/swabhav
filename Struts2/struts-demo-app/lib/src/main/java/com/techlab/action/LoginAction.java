@@ -43,7 +43,7 @@ public class LoginAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("Inside Execute");
+		System.out.println("Inside Execute Action");
 		LoginService service = new LoginService();
 		if (service.isValidate(username, password)) {
 			return "success";
