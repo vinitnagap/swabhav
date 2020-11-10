@@ -7,7 +7,11 @@ public class Employee {
 	private String name;
 	private String role;
 
-	public Employee(UUID id, String name, String role) {
+	public Employee() {
+
+	}
+
+	public Employee(String id, String name, String role) {
 		this.id = id.toString();
 		this.name = name;
 		this.role = role;
@@ -31,6 +35,10 @@ public class Employee {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public void setId(String id) {
+		this.id = id.toString();
 	}
 
 }

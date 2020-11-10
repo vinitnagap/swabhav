@@ -9,11 +9,11 @@ import com.techlab.model.Employee;
 public class EmployeeService {
 	private static EmployeeService instance;
 	public List<Employee> employees;
-	Employee emp1 = new Employee(UUID.randomUUID(), "Virat", "Developer");
-	Employee emp2 = new Employee(UUID.randomUUID(), "Sachin", "Analyst");
-	Employee emp3 = new Employee(UUID.randomUUID(), "Dhoni", "Analyst");
-	Employee emp4 = new Employee(UUID.randomUUID(), "Ram", "Accountant");
-	Employee emp5 = new Employee(UUID.randomUUID(), "Gopal", "Manager");
+	Employee emp1 = new Employee(UUID.randomUUID().toString(), "Virat", "Developer");
+	Employee emp2 = new Employee(UUID.randomUUID().toString(), "Sachin", "Analyst");
+	Employee emp3 = new Employee(UUID.randomUUID().toString(), "Dhoni", "Analyst");
+	Employee emp4 = new Employee(UUID.randomUUID().toString(), "Ram", "Accountant");
+	Employee emp5 = new Employee(UUID.randomUUID().toString(), "Gopal", "Manager");
 
 	private EmployeeService() {
 		employees = new ArrayList<Employee>();
@@ -48,6 +48,15 @@ public class EmployeeService {
 		}
 	}
 
+	public void updateEmployee(Employee emp) {
+		for (Employee employee : employees) {
+			if (employee.getId().equals(emp.getId())) {
+				employee.setName(emp.getName());
+				employee.setRole(emp.getRole());
+			}
+		}
+	}
+
 	public List<Employee> getEmployees(String name) {
 		System.out.println("Inside Search");
 		List<Employee> emps = new ArrayList<Employee>();
@@ -58,5 +67,14 @@ public class EmployeeService {
 			}
 		}
 		return emps;
+	}
+
+	public Employee searchEmployee(String id) {
+		for (Employee employee : employees) {
+			if (employee.getId().equals(id)) {
+				return employee;
+			}
+		}
+		return null;
 	}
 }

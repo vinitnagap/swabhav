@@ -1,1 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="authinterceptor"
+				class="com.techlab.action.AuthInterceptor"></interceptor>
+		</interceptors>
+		<action name="login" class="com.techlab.action.LoginAction"
+			method="execute">
+			<result name="success">login.jsp</result>
+
+		</action>
+
+		<action name="login.do" class="com.techlab.action.LoginAction"
+			method="loginDo">
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="authinterceptor" />
+			<result name="success">employee</result>
+			<result name="input">login.jsp</result>
+			<result name="failure">login.jsp</result>
+
+		</action>
+		<action name="employee"
+			class="com.techlab.action.EmployeeAction">
+			<result name="success">employee.jsp</result>
+		</action>
+
+		<action name="add" class="com.techlab.action.AddAction"
+			method="doAdd">
+			<result name="input">add.jsp</result>
+		</action>
+
+		<action name="addRecord" class="com.techlab.action.AddAction">
+			<result name="success" type="chain">employee</result>
+		</action>
+
+		<action name="delete" class="com.techlab.action.DeleteAction">
+			<result name="success" type="redirect">employee</result>
+		</action>
+
+		<action name="update" class="com.techlab.action.EditAction"
+			method="doEdit">
+			<result name="success">edit.jsp</result>
+		</action>
+
+		<action name="updateRecord"
+			class="com.techlab.action.EditAction">
+			<result name="success" type="chain">employee</result>
+		</action>
+
+
+
+	</package>
+
+</struts> 
