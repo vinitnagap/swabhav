@@ -10,33 +10,46 @@
 			<interceptor name="authinterceptor"
 				class="com.techlab.action.AuthInterceptor"></interceptor>
 		</interceptors>
+		<action name="employee"
+			class="com.techlab.action.EmployeeAction">
+			<result name="success">employee.jsp</result>
+		</action>
 		<action name="login" class="com.techlab.action.LoginAction"
 			method="execute">
 			<result name="success">login.jsp</result>
+			<result name="input">login.jsp</result>
 
+		</action>
+
+		<action name="logout" class="com.techlab.action.LogoutAction">
+			<result name="success" type="chain">login</result>
 		</action>
 
 		<action name="login.do" class="com.techlab.action.LoginAction"
 			method="loginDo">
 			<interceptor-ref name="params"></interceptor-ref>
 			<interceptor-ref name="authinterceptor" />
-			<result name="success">employee</result>
+			<result name="true" type="chain">employee</result>
 			<result name="input">login.jsp</result>
-			<result name="failure">login.jsp</result>
+			<result name="failure" type="chain">login</result>
 
 		</action>
-		<action name="employee"
-			class="com.techlab.action.EmployeeAction">
-			<result name="success">employee.jsp</result>
-		</action>
+
 
 		<action name="add" class="com.techlab.action.AddAction"
 			method="doAdd">
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="authinterceptor" />
 			<result name="input">add.jsp</result>
+			<result name="true">add.jsp</result>
+			<result name="failure" type="chain">login</result>
 		</action>
 
-		<action name="addRecord" class="com.techlab.action.AddAction">
+		<action name="addRecord" class="com.techlab.action.AddAction"
+			method="execute">
 			<result name="success" type="chain">employee</result>
+			<result name="true" type="chain">employee</result>
+			<result name="failure" type="chain">login</result>
 		</action>
 
 		<action name="delete" class="com.techlab.action.DeleteAction">

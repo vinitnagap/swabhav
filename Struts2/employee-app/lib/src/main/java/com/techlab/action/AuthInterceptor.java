@@ -20,9 +20,10 @@ public class AuthInterceptor extends AbstractInterceptor {
 		}
 		if (session.getAttribute("user") != null) {
 			if (session.getAttribute("user") == "admin") {
-				return "success";
+				return "true";
 			}
-		} else return "failure";
+		} else
+			return "failure";
 		return "failure";
 	}
 

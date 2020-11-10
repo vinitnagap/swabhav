@@ -8,6 +8,9 @@
 <title>Employee Details</title>
 </head>
 <body>
+	<div>
+		<a href="logout">Logout</a>
+	</div>
 	<a href="add">Add</a>
 	<table border="1" style="width: 50%" height="50%">
 		<thead>
@@ -25,7 +28,7 @@
 					<td><s:property value="id" /></td>
 					<td><s:property value="name" /></td>
 					<td><s:property value="role" /></td>
-					<td><s:form action="update" method="get">
+					<td><s:form action="update">
 							<s:hidden name="editEmployee" value="%{id}"></s:hidden>
 							<s:submit value="Edit"></s:submit>
 						</s:form></td>
