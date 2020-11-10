@@ -6,6 +6,8 @@
 <struts>
 	<package name="main" extends="struts-default">
 		<interceptors>
+			<interceptor name="authinterceptor"
+				class="com.techlab.action.AuthInterceptor"></interceptor>
 			<interceptor name="myinterceptor"
 				class="com.techlab.action.MyInterceptor"></interceptor>
 		</interceptors>
@@ -16,8 +18,10 @@
 			<result name="success">wish.jsp</result>
 		</action>
 
-		<action name="login">
-			<result>login.jsp</result>
+		<action name="login" class="com.techlab.action.LoginAction"
+			method="execute">
+			<result name="success">login.jsp</result>
+
 		</action>
 		<action name="register">
 			<result>register.jsp</result>
@@ -32,11 +36,16 @@
 		<action name="session" class="com.techlab.action.SessionAction">
 			<result name="success">session.jsp</result>
 		</action>
-		<action name="loginprocess"
-			class="com.techlab.action.LoginAction">
+		<action name="login.do" class="com.techlab.action.LoginAction"
+			method="loginDo">
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="authinterceptor" />
+			<result name="success">loginsuccess.jsp</result>
 			<result name="input">login.jsp</result>
-			<result name="success">index.jsp</result>
+			<result name="failure">login.jsp</result>
+
 		</action>
+
 
 		<action name="registerDo"
 			class="com.techlab.action.RegisterAction" method="registerDo">
@@ -44,4 +53,5 @@
 			<result name="success">successRegister.jsp</result>
 		</action>
 	</package>
+
 </struts>

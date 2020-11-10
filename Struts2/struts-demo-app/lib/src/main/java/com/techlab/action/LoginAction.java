@@ -1,20 +1,20 @@
 package com.techlab.action;
 
-import com.opensymphony.xwork2.ActionSupport;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.opensymphony.xwork2.Action;
 import com.techlab.service.LoginService;
 
-public class LoginAction extends ActionSupport {
-	private String username, password, message;
-
-	@Override
-	public void validate() {
-		if (username.equals("")) {
-			addFieldError("username", "Enter Username");
-		}
-		if (password.equals("")) {
-			addFieldError("password", "Enter Password");
-		}
-	}
+public class LoginAction implements SessionAware, Action {
+	private SessionMap<String, Object> map;
+	private HttpSession session = ServletActionContext.getRequest().getSession(false);
+	String username, password, message;
 
 	public String getUsername() {
 		return username;
@@ -42,34 +42,35 @@ public class LoginAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println("Inside Execute Action");
-		LoginService service = new LoginService();
-		if (service.isValidate(username, password)) {
-			return "success";
-		}
-//		if (username.equals("")) {
-//			message = "username is required";
-//			return "input";
-//		}
-//		if (password.equals("")) {
-//			message = "password is required";
-//			return "input";
-//		}
-		return "error";
+		map.put("user", "admin");
+		return "success";
+
 	}
 
-//	public String loginDo() throws Exception {
-//		if (username.equals("")) {
-//			message = "username is required";
+	public String loginDo() {
+		// LoginService service = LoginService.getInstance();
+//		if (session == null || session.getAttribute("user") == null) {
+//			message = "Login";
 //			return "input";
-//		}
-//		if (password.equals("")) {
-//			message = "password is required";
-//			return "input";
-//		}
-//		execute();
-//		return null;
-//
-//	}
+//		} else if (session.getAttribute("user") == "admin") {
+//			return "success";
+		// }
+		if (username == null) {
+			message = "Enter Username";
+			return "input";
+		} else if (password == null) {
+			message = "Enter Password";
+			return "input";
+		} else if (LoginService.getInstance().isValidate(username, password) == false) {
+			message = "Incorrect Username & Password";
+			return "input";
+		}
+		return "success";
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		map = (SessionMap<String, Object>) session;
+	}
+
 }

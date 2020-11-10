@@ -5,13 +5,22 @@ import java.util.Map;
 
 public class LoginService {
 
+	private static LoginService instance;
 	private Map<String, String> map;
 
-	public LoginService() {
+	private LoginService() {
 		map = new HashMap<String, String>();
 		map.put("admin", "admin");
 		map.put("vinit", "vinit");
 		map.put("sachin", "sachin");
+	}
+
+	public static LoginService getInstance() {
+		if (instance == null) {
+			instance = new LoginService();
+			return instance;
+		}
+		return instance;
 	}
 
 	public boolean isValidate(String username, String password) {
@@ -19,6 +28,9 @@ public class LoginService {
 			if (username.equals(entry.getKey()) && password.equals(entry.getValue())) {
 				return true;
 			}
+		}
+		if (username.equals("") || password.equals("")) {
+			return false;
 		}
 		return false;
 	}
