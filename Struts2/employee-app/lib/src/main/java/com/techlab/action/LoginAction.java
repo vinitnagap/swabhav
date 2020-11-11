@@ -9,23 +9,15 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionSupport;
 import com.techlab.service.LoginService;
 
-public class LoginAction implements SessionAware, Action {
+public class LoginAction extends ActionSupport implements SessionAware {
 	private SessionMap<String, Object> map;
-	private HttpSession session = ServletActionContext.getRequest().getSession(false);
-	String username, password, message;
+	String username, password;
 
 	public String getUsername() {
 		return username;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
 	}
 
 	public void setUsername(String username) {
@@ -42,29 +34,21 @@ public class LoginAction implements SessionAware, Action {
 
 	@Override
 	public String execute() throws Exception {
-		map.put("user", "admin");
-		return "success";
+//		map.put("user", "admin");
+//		return "success";
+		System.out.println(username + " " + password);
+		if (LoginService.getInstance().isValidate(username, password) == true) {
+			map.put("loginId", username);
+			return "success";
+		} else {
+			addActionError("Please Enter Valid Username & Password");
+			return "login";
+		}
 
 	}
 
-	public String loginDo() {
-		// LoginService service = LoginService.getInstance();
-//		if (session == null || session.getAttribute("user") == null) {
-//			message = "Login";
-//			return "input";
-//		} else if (session.getAttribute("user") == "admin") {
-//			return "success";
-		// }
-		if (username == null) {
-			message = "Enter Username";
-			return "input";
-		} else if (password == null) {
-			message = "Enter Password";
-			return "input";
-		} else if (LoginService.getInstance().isValidate(username, password) == false) {
-			message = "Incorrect Username & Password";
-			return "input";
-		}
+	public String logout() {
+		map.remove("loginId");
 		return "success";
 	}
 

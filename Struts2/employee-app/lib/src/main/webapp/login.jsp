@@ -8,13 +8,12 @@
 <title>Login</title>
 </head>
 <body>
-	<form action="login.do.action" method="post">
+	<s:actionmessage />
+	<s:actionerror />
+	<form id="idLoginForm" action="loginUser" >
 		Username = <input type="text" name="username" /><br> Password =
 		<input type="password" name="password" /><br> <input
 			type="submit" value="submit" />
 	</form>
-	<p style="color: red">
-		<s:property value="message" />
-	</p>
 </body>
 </html>

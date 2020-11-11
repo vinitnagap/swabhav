@@ -44,6 +44,7 @@ public class EmployeeService {
 		for (Employee employee : employees) {
 			if (employee.getId().equals(id)) {
 				employees.remove(employee);
+				break;
 			}
 		}
 	}
