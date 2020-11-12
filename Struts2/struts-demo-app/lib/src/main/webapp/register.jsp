@@ -13,7 +13,7 @@
 <title>Register</title>
 </head>
 <body>
-	<s:form action="registerDo">
+	<s:form action="registerDo" autocomplete="off">
 		<s:textfield name="firstName" label="First Name"></s:textfield>
 		<s:textfield name="lastName" label="Last Name"></s:textfield>
 		<s:textfield name="age" label="Age"></s:textfield>

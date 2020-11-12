@@ -1,7 +1,5 @@
 package com.techlab.action;
 
-import java.util.UUID;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.techlab.model.Employee;
@@ -13,7 +11,6 @@ public class AddAction extends ActionSupport implements ModelDriven<Employee> {
 
 	@Override
 	public String execute() {
-		employee.setId(UUID.randomUUID().toString());
 		EmployeeService.getInstance().addEmployee(employee);
 		return "success";
 	}

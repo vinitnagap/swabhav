@@ -37,6 +37,7 @@ public class EmployeeService {
 	}
 
 	public void addEmployee(Employee emp) {
+		emp.setId(UUID.randomUUID().toString());
 		employees.add(emp);
 	}
 
