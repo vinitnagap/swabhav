@@ -4,18 +4,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<style type="text/css">
+body {
+	background-color: gray;
+}
+</style>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
 	<a href="getemployees">Get Record</a>
-	<table border="1" style="width: 50%" height="50%">
+	<table border="1" style="width: 50%" height="50%"
+		class="table table-dark">
 		<thead>
 			<tr>
-				<th>ID</th>
-				<th>Name</th>
-				<th>Designation</th>
-				<th>Salary</th>
+				<th scope="col">ID</th>
+				<th scope="col">Name</th>
+				<th scope="col">Designation</th>
+				<th scope="col">Salary</th>
 			</tr>
 		</thead>
 		<tbody>
