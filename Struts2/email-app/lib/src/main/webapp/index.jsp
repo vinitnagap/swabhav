@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="botDetect" uri="https://captcha.com/java/jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,13 +10,21 @@
 </head>
 <body>
 	<form action="sendemail" method="post">
-		<label for="from">From</label><br> <input type="text" name="from" /><br>
-		<label for="password">Password</label><br> <input type="password"
-			name="password" /><br> <label for="to">To</label><br> <input
-			type="text" name="to" /><br> <label for="subject">Subject</label><br>
-		<input type="text" name="subject" /><br> <label for="body">Body</label><br>
-		<input type="text" name="body" /><br> <input type="submit"
-			value="Send Mail" />
+		<label>First Name : </label> 
+		<input type="text" name="firstName" /><br><br>
+		<label>Last Name : </label> 
+		<input type="text" name="lastName" /><br><br>
+		<label>Age : </label>
+		<input type="number" name="age" /><br><br> 
+		<label>Email : </label> 
+		<input type="text" name="to" /><br><br> 
+
+		<!-- Adding BotDetect Captcha to the page -->
+		<botDetect:captcha id="exampleCaptcha" userInputID="captchaCode"></botDetect:captcha>
+
+		<br /><label for="captchaCode"> Enter Captcha : </label>
+		<s:textfield name="captchaCode" /><br><br>
+		<input type="submit" value="Register" />
 	</form>
 </body>
 </html>

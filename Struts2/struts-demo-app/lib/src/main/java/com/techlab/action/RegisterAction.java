@@ -49,10 +49,13 @@ public class RegisterAction extends ActionSupport implements ModelDriven<Registe
 
 	public String registerDo() {
 		String detailsMessage = "Registration Complete! Your Details are as follows :";
-		String nameMessgae = "Name = " + vm.getFirstName() + " " + vm.getLastName();
-		String ageMessage = "Age = " + vm.getAge();
-		String emailMessage = "Email-id = " + vm.getEmailId();
+		String nameMessgae = "Name = " + vm.getFirstName() + " " + vm.getLastName() + "\n";
+		String ageMessage = "Age = " + vm.getAge() + "\n";
+		String emailMessage = "Email-id = " + vm.getEmailId() + "\n";
 		detailsMessage += nameMessgae + "\n" + ageMessage + "\n" + emailMessage;
+		System.out.println(this.vm.getFirstName());
+		this.vm.setFirstName("");
+		System.out.println(this.vm.getFirstName());
 		vm.setMessage(detailsMessage);
 		return "success";
 	}

@@ -10,6 +10,9 @@
 			<interceptor name="authinterceptor"
 				class="com.techlab.interceptor.AuthInterceptor"></interceptor>
 		</interceptors>
+		<action name="">
+			<result>index.jsp</result>
+		</action>
 		<action name="login">
 			<result>login.jsp</result>
 		</action>

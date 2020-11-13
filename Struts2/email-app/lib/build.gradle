@@ -27,6 +27,9 @@ jar {
 
 repositories {
     mavenCentral()
+     maven {
+    	url "https://git.captcha.com/botdetect-java-captcha.git/blob_plain/HEAD:/"
+  	}
     
 }
 
@@ -41,6 +44,7 @@ dependencies {
     compile group: 'org.apache.struts', name: 'struts2-json-plugin', version: '2.5.1'
     // https://mvnrepository.com/artifact/javax.mail/mail
 	compile group: 'javax.mail', name: 'mail', version: '1.4.1'
+	 compile 'com.captcha:botdetect-jsp20:4.0.beta3.7'
     
 }
 

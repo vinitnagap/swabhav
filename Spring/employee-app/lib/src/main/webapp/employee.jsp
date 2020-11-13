@@ -16,27 +16,22 @@ table {
 	margin: auto;
 	width: 50%;
 	padding: 10px;
+	width: 100%;
+	height: 100%;
 }
 
 body {
 	background-color: aqua;
 }
-
-#logout {
-	float: right;
-}
 </style>
 </head>
 <body>
 	<nav class="navbar navbar-light bg-light">
-		<span class="navbar-brand mb-0 h1">Welcome</span>
+		<span class="navbar-brand mb-0 h1 display-4">Welcome</span> <a
+			id="add" href="add" class="btn btn-dark">Add</a> <a href="logout"
+			class="btn btn-dark">Logout</a>
 	</nav>
-	<div id=logout>
-		<a href="logout" class="btn btn-dark">Logout</a>
-	</div>
-	<a href="add" class="btn btn-dark">Add</a>
-	<table border="1" style="width: 50%" height="50%"
-		class="table table-dark">
+	<table border="1" class="table table-dark">
 		<thead>
 			<tr>
 				<th scope="col">ID</th>

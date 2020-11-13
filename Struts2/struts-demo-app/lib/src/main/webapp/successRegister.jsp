@@ -10,6 +10,7 @@
 <body>
 	<h1>
 		<s:property value="message" />
+		<a href="register">Register Again</a>
 	</h1>
 </body>
 </html>
