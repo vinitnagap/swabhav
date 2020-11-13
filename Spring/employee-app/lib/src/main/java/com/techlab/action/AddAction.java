@@ -1,5 +1,7 @@
 package com.techlab.action;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.techlab.service.EmployeeService;
@@ -8,6 +10,8 @@ import com.techlab.viewmodel.AddVM;
 public class AddAction extends ActionSupport implements ModelDriven<AddVM> {
 
 	private AddVM employee;
+	@Autowired
+	EmployeeService empService;
 
 	@Override
 	public void validate() {
@@ -21,7 +25,7 @@ public class AddAction extends ActionSupport implements ModelDriven<AddVM> {
 
 	@Override
 	public String execute() {
-		EmployeeService.getInstance().addEmployee(employee.getName(), employee.getRole());
+		empService.addEmployee(employee.getName(), employee.getRole());
 		return "success";
 	}
 
