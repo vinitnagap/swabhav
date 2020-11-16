@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="authinterceptor"
+				class="com.techlab.interceptor.AuthInterceptor"></interceptor>
+		</interceptors>
+		<action name="login">
+			<result>login.jsp</result>
+		</action>
+		<action name="employee"
+			class="com.techlab.action.EmployeeAction">
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="authinterceptor" />
+			<result name="login" type="chain">login</result>
+			<result name="success">employee.jsp</result>
+		</action>
+		<action name="loginUser" class="com.techlab.action.LoginAction">
+			<result name="success" type="redirect">employee</result>
+			<result name="login">login.jsp</result>
+
+		</action>
+
+		<action name="logout" class="com.techlab.action.LoginAction"
+			method="logout">
+			<result name="success" type="chain">login</result>
+		</action>
+
+
+
+		<action name="add" class="com.techlab.action.AddAction"
+			method="doAdd">
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="authinterceptor" />
+			<result name="input">add.jsp</result>
+			<result name="login" type="chain">login</result>
+		</action>
+
+		<action name="addRecord" class="com.techlab.action.AddAction"
+			method="execute">
+			<result name="success" type="redirect">employee</result>
+			<result name="input">add.jsp</result>
+			<result name="login" type="chain">login</result>
+		</action>
+
+		<action name="delete" class="com.techlab.action.DeleteAction">
+			<result name="success" type="redirect">employee</result>
+		</action>
+
+		<action name="update" class="com.techlab.action.EditAction"
+			method="doEdit">
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="authinterceptor" />
+			<result name="login" type="chain">login</result>
+			<result name="success">edit.jsp</result>
+		</action>
+
+		<action name="updateRecord"
+			class="com.techlab.action.EditAction">
+			<result name="success" type="chain">employee</result>
+		</action>
+
+
+
+	</package>
+
+</struts> 
