@@ -44,9 +44,16 @@ public class Test {
 			deepikaMovie.add(m1);
 			deepikaMovie.add(m2);
 			deepika.setMovies(deepikaMovie);
+			Set<Actor> movieActors = new HashSet<Actor>();
+			movieActors.add(ranveer);
+			movieActors.add(deepika);
+			m1.setActors(movieActors);
+			m2.setActors(movieActors);
 			transaction = session.beginTransaction();
-			session.persist(m1);
-			session.persist(m2);
+			session.save(ranveer);
+			session.save(deepika);
+			session.save(m1);
+			session.save(m2);
 			transaction.commit();
 		} catch (Exception ex) {
 			if (transaction != null) {

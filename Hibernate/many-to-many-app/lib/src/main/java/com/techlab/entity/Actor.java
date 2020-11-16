@@ -3,7 +3,9 @@ package com.techlab.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
@@ -12,7 +14,7 @@ public class Actor {
 	@Id
 	private int id;
 	private String name;
-	@ManyToMany(mappedBy = "actors")
+	@ManyToMany(mappedBy = "actors", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<Movie> movies = new HashSet<Movie>();
 
 	public Set<Movie> getMovies() {

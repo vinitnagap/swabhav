@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -15,8 +16,8 @@ public class Movie {
 	@Id
 	private int id;
 	private String name;
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "movie_actor", joinColumns = { @JoinColumn(name = "movie_id") }, inverseJoinColumns = {
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "Movies_Actors", joinColumns = { @JoinColumn(name = "movie_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "actor_id") })
 	private Set<Actor> actors = new HashSet<Actor>();
 
