@@ -14,6 +14,11 @@ public class Employee {
 	@JoinColumn
 	private Department dept;
 
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", dept=" + dept + "]";
+	}
+
 	public int getId() {
 		return id;
 	}

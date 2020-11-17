@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import com.techlab.entity.Employee;
 import com.techlab.repository.EmployeeRepository;
 
-@Service
+@Service("employeesvc")
 public class EmployeeService {
 	@Autowired
-	private EmployeeRepository repository;
+	EmployeeRepository repository;
 
 	public List<Employee> getEmployees() {
 		return repository.getEmployees();
