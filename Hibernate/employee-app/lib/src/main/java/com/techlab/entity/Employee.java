@@ -14,6 +14,13 @@ public class Employee {
 
 	}
 
+	public Employee(String id, String name, String role) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.role = role;
+	}
+
 	public String getId() {
 		return id;
 	}

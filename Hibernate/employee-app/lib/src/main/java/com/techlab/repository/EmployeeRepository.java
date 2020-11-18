@@ -3,8 +3,6 @@ package com.techlab.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,16 +13,15 @@ import com.techlab.entity.Employee;
 public class EmployeeRepository {
 
 	@Autowired
-	SessionFactory factory;
+	private SessionFactory fact;
 
 	public EmployeeRepository() {
 		// TODO Auto-generated constructor stub
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<Employee> getEmployees() {
 		List<Employee> employees = new ArrayList<Employee>();
-		employees = factory.getCurrentSession().createQuery("from Employee").list();
+		employees = fact.getCurrentSession().createQuery("from Employee").list();
 		return employees;
 
 	}
@@ -33,24 +30,24 @@ public class EmployeeRepository {
 		Employee employee = new Employee();
 		employee.setName(name);
 		employee.setRole(role);
-		factory.getCurrentSession().save(employee);
+		fact.getCurrentSession().save(employee);
 	}
 
 	public void deleteEmployee(String id) {
-		Employee employee = (Employee) factory.getCurrentSession().load(Employee.class, id);
-		factory.getCurrentSession().delete(employee);
+		Employee employee = (Employee) fact.getCurrentSession().load(Employee.class, id);
+		fact.getCurrentSession().delete(employee);
 	}
 
 	public void updateEmployee(String id, String name, String role) {
-		Employee employee = (Employee) factory.getCurrentSession().load(Employee.class, id);
+		Employee employee = (Employee) fact.getCurrentSession().load(Employee.class, id);
 		employee.setName(name);
 		employee.setRole(role);
-		factory.getCurrentSession().update(employee);
+		fact.getCurrentSession().update(employee);
 	}
 
 	public List<Employee> getEmployees(String name) {
 		List<Employee> employees = new ArrayList<Employee>();
-		employees = factory.getCurrentSession().createQuery("from Employee").list();
+		employees = fact.getCurrentSession().createQuery("from Employee").list();
 		List<Employee> emps = new ArrayList<Employee>();
 		for (Employee employee : employees) {
 			if (employee.getName().equals(name)) {
@@ -62,7 +59,7 @@ public class EmployeeRepository {
 
 	public Employee searchEmployee(String id) {
 		List<Employee> employees = new ArrayList<Employee>();
-		employees = factory.getCurrentSession().createQuery("from Employee").list();
+		employees = fact.getCurrentSession().createQuery("from Employee").list();
 		for (Employee employee : employees) {
 			if (employee.getId() == id) {
 				return employee;
