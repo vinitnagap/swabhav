@@ -4,7 +4,48 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="main" extends="struts-default">
+		<action name="users"
+			class="com.techlab.action.DisplayUserAction">
+			<result name="success">view/display_user.jsp</result>
 
+		</action>
+		<action name="login">
+			<result name="success">view/login.jsp</result>
 
+		</action>
+		<action name="register">
+			<result name="success">view/register.jsp</result>
+		</action>
+
+		<action name="registerDo"
+			class="com.techlab.action.RegisterAction">
+			<result name="input">view/register.jsp</result>
+			<result name="success" type="redirect">login</result>
+		</action>
+		<action name="loginDo" class="com.techlab.action.LoginAction">
+			<result name="input">view/login.jsp</result>
+			<result name="success" type="redirect">users</result>
+		</action>
+
+		<action name="addUserBtn">
+			<result name="success">view/add_user.jsp</result>
+		</action>
+		<action name="addUser" class="com.techlab.action.AddUserAction">
+			<result name="input">view/add_user.jsp</result>
+			<result name="success" type="chain">users</result>
+		</action>
+		<action name="deleteUserBtn"
+			class="com.techlab.action.DeleteUserAction">
+			<result name="success" type="redirect">users</result>
+		</action>
+		<action name="editUserBtn"
+			class="com.techlab.action.EditUserAction">
+			<result name="success">view/edit_user.jsp</result>
+		</action>
+		<action name="editUser"
+			class="com.techlab.action.EditUserAction" method="doEditUser">
+			<result name="input">view/edit_user.jsp</result>
+			<result name="success" type="redirect">users</result>
+		</action>
 	</package>
 </struts>

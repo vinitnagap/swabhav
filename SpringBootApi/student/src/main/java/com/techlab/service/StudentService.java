@@ -2,6 +2,7 @@ package com.techlab.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -33,5 +34,30 @@ public class StudentService {
 			instance = new StudentService();
 		}
 		return instance;
+	}
+
+	public Student getStudent(String rollNo) {
+		for (Student student : students) {
+			if (student.getRollNo().equals(rollNo)) {
+				return student;
+			}
+		}
+		return null;
+	}
+
+	public void addStudent(Student student) {
+		student.setRollNo(UUID.randomUUID().toString());
+		students.add(student);
+	}
+
+	public void updateStudent(Student student) {
+		Student stud = getStudent(student.getRollNo());
+		stud.setName(student.getName());
+		stud.setAddress(student.getAddress());
+		stud.setAge(student.getAge());
+	}
+
+	public void deleteStudent(String rollNo) {
+		students.remove(getStudent(rollNo));
 	}
 }
