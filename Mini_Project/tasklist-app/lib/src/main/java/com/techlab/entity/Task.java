@@ -1,6 +1,5 @@
 package com.techlab.entity;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,8 +17,21 @@ public class Task {
 	@Id
 	private String id;
 	private String title;
-	private Date date;
+	private String date;
 	private boolean done;
+
+	public Task() {
+
+	}
+
+	public Task(String id, String title, String date, boolean done, User user) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.date = date;
+		this.done = done;
+		this.user = user;
+	}
 
 	@ManyToOne
 	@JoinColumn
@@ -60,11 +72,11 @@ public class Task {
 		this.title = title;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

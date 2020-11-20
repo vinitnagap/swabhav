@@ -1,0 +1,18 @@
+<p>student works!</p>
+<h1 [innerHtml]='"Hello"' [style.font-color]="'red'"></h1>
+<img [src] ="ImagePath"  
+          style="width: 600px;height: 400px;"> 
+<button (click)="loadStudent()">Load Student</button>
+<div>
+    {{Student.rollno}}
+    {{Student.name}}
+    {{Student.cgpa}}
+</div>
+
+<button (click)="loadStudents()">Load Students</button>
+<div *ngFor="let stud of Students">
+    {{stud.rollno}}
+    {{stud.name}}
+    {{stud.cgpa}}
+</div>
+

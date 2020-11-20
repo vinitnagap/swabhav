@@ -7,43 +7,37 @@
 <meta charset="ISO-8859-1">
 <title>User Details</title>
 </head>
-<h1>User Details</h1>
+<h1>Task Details</h1>
 <body>
-	<s:form action="addUserBtn">
+	<s:form action="addTaskBtn">
 		<s:submit value="Add"></s:submit>
 	</s:form>
 	<table border="1">
 		<thead>
 			<tr>
-				<th>ID</th>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Username</th>
-				<th>Email-id</th>
-				<th>Password</th>
-				<th>Task</th>
+				<th>Checked</th>
+				<th>Title</th>
+				<th>Date</th>
+				<th>Subtask</th>
 				<th>Edit</th>
 				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
-			<s:iterator value="users">
+			<s:iterator value="tasks">
 				<tr>
-					<td><s:property value="id" /></td>
-					<td><s:property value="firstName" /></td>
-					<td><s:property value="lastName" /></td>
-					<td><s:property value="username" /></td>
-					<td><s:property value="email" /></td>
-					<td><s:property value="password" /></td>
-					<td><s:form action="showtask">
-							<s:hidden name="id" value="%{id}"></s:hidden>
+					<td></td>
+					<td><s:property value="title" /></td>
+					<td><s:property value="date" /></td>
+					<td><s:form action="showSubTask">
+							<s:hidden name="taskId" value="%{id}"></s:hidden>
 							<s:submit value="Task"></s:submit>
 						</s:form></td>
-					<td><s:form action="editUserBtn">
+					<td><s:form action="editTaskBtn">
 							<s:hidden name="id" value="%{id}"></s:hidden>
 							<s:submit value="Edit"></s:submit>
 						</s:form></td>
-					<td><s:form action="deleteUserBtn">
+					<td><s:form action="deleteTaskBtn">
 							<s:hidden name="id" value="%{id}"></s:hidden>
 							<s:submit value="Delete"></s:submit>
 						</s:form></td>

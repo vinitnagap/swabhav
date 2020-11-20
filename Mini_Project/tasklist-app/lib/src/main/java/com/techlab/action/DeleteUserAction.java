@@ -13,7 +13,7 @@ public class DeleteUserAction implements Action {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println(id);
+		//System.out.println(id);
 		service.deleteUser(id);
 		return "success";
 	}

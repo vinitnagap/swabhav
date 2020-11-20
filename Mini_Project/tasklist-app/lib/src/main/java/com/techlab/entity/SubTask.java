@@ -13,7 +13,7 @@ public class SubTask {
 	@Id
 	private String id;
 	private String title;
-	private Date date;
+	private String date;
 	private boolean done;
 
 	@ManyToOne
@@ -44,20 +44,20 @@ public class SubTask {
 		this.title = title;
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
 	public boolean isDone() {
 		return done;
 	}
 
 	public void setDone(boolean done) {
 		this.done = done;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 }
