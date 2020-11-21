@@ -19,6 +19,7 @@
 		<s:textfield name="username" label="Username"></s:textfield>
 		<s:textfield name="emailid" label="Email-id"></s:textfield>
 		<s:password name="password" label="Password"></s:password>
+		<s:password name="confirmPassword" label="Confirm Password"></s:password>
 		<s:submit value="Register"></s:submit>
 
 	</s:form>

@@ -8,25 +8,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import com.techlab.entity.User;
-import com.techlab.service.TaskService;
+import com.techlab.entity.Task;
+import com.techlab.service.SubtaskService;
 import com.techlab.viewmodel.AddTaskViewModel;
 
-public class AddTaskAction extends ActionSupport implements ModelDriven<AddTaskViewModel>, SessionAware {
+public class AddSubtaskAction extends ActionSupport implements ModelDriven<AddTaskViewModel>, SessionAware {
 	@Autowired
-	private TaskService service;
+	private SubtaskService service;
 	private AddTaskViewModel vm;
 	private SessionMap<String, Object> session;
 
-	@Override
 	public String execute() {
 		return "success";
 	}
 
-	public String addTaskDo() {
-		User user = (User) session.get("user");
-		service.addTask(vm.getTitle(), user);
+	public String addSubtaskDo() {
+		Task task = (Task) session.get("task");
+		if (task == null) {
+			return "error";
+		}
+		service.addSubtask(vm.getTitle(), task);
 		return "success";
+	}
+
+	public void validateAddSubtaskDo() {
+		if (vm.getTitle().equals("")) {
+			addFieldError("title", "Enter Title");
+		}
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		// TODO Auto-generated method stub
+		this.session = (SessionMap<String, Object>) session;
 	}
 
 	@Override
@@ -34,12 +48,6 @@ public class AddTaskAction extends ActionSupport implements ModelDriven<AddTaskV
 		// TODO Auto-generated method stub
 		vm = new AddTaskViewModel();
 		return vm;
-	}
-
-	public void validateAddTaskDo() {
-		if (vm.getTitle().equals("")) {
-			addFieldError("title", "Enter Title");
-		}
 	}
 
 	public AddTaskViewModel getVm() {
@@ -56,13 +64,6 @@ public class AddTaskAction extends ActionSupport implements ModelDriven<AddTaskV
 
 	public void setSession(SessionMap<String, Object> session) {
 		this.session = session;
-	}
-
-	@Override
-	public void setSession(Map<String, Object> session) {
-		// TODO Auto-generated method stub
-		this.session = (SessionMap<String, Object>) session;
-
 	}
 
 }

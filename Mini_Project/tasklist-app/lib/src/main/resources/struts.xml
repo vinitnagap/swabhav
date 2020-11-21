@@ -7,12 +7,15 @@
 		<interceptors>
 			<interceptor name="authinterceptor"
 				class="com.techlab.interceptor.AuthInterceptor"></interceptor>
-		</interceptors>
 
+			<interceptor-stack name="task">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="authinterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
 		<action name="users"
 			class="com.techlab.action.DisplayUserAction">
-			<interceptor-ref name="params"></interceptor-ref>
-			<interceptor-ref name="authinterceptor" />
+			<interceptor-ref name="task"></interceptor-ref>
 			<result name="login" type="chain">login</result>
 			<result name="success">view/display_user.jsp</result>
 
@@ -36,8 +39,7 @@
 		</action>
 
 		<action name="addUserBtn">
-			<interceptor-ref name="params"></interceptor-ref>
-			<interceptor-ref name="authinterceptor" />
+			<interceptor-ref name="task"></interceptor-ref>
 			<result name="login" type="chain">login</result>
 			<result name="success">view/add_user.jsp</result>
 		</action>
@@ -60,24 +62,81 @@
 			<result name="success" type="redirect">users</result>
 		</action>
 
+		<!-- Task -->
 		<action name="showtask"
 			class="com.techlab.action.DisplayTaskAction">
-			<interceptor-ref name="params"></interceptor-ref>
-			<interceptor-ref name="authinterceptor" />
+			<interceptor-ref name="task"></interceptor-ref>
 			<result name="login" type="chain">login</result>
 			<result name="success">view/display_task.jsp</result>
 		</action>
-
-		<action name="addTaskBtn">
-			<interceptor-ref name="params"></interceptor-ref>
-			<interceptor-ref name="authinterceptor" />
+		<action name="addTaskBtn"
+			class="com.techlab.action.AddTaskAction">
+			<interceptor-ref name="task"></interceptor-ref>
 			<result name="login" type="chain">login</result>
 			<result name="success">view/add_task.jsp</result>
 		</action>
-
-		<action name="addTask" class="com.techlab.action.AddTaskAction">
+		<action name="addTask" class="com.techlab.action.AddTaskAction"
+			method="addTaskDo">
+			<interceptor-ref name="task"></interceptor-ref>
 			<result name="input">view/add_task.jsp</result>
 			<result name="success" type="redirect">showtask</result>
+		</action>
+		<action name="deleteTaskBtn"
+			class="com.techlab.action.DeleteTaskAction">
+			<interceptor-ref name="task"></interceptor-ref>
+			<result name="login" type="chain">login</result>
+			<result name="success" type="redirect">showtask</result>
+		</action>
+		<action name="editTaskBtn"
+			class="com.techlab.action.EditTaskAction">
+			<interceptor-ref name="task"></interceptor-ref>
+			<result name="login" type="chain">login</result>
+			<result name="success">view/edit_task.jsp</result>
+		</action>
+		<action name="editTask"
+			class="com.techlab.action.EditTaskAction" method="editTaskDo">
+			<interceptor-ref name="task"></interceptor-ref>
+			<result name="input">view/edit_task.jsp</result>
+			<result name="success" type="redirect">showtask</result>
+		</action>
+
+		<!-- Subtask -->
+		<action name="showSubtask"
+			class="com.techlab.action.DisplaySubtaskAction">
+			<interceptor-ref name="task"></interceptor-ref>
+			<result name="login" type="chain">login</result>
+			<result name="success">view/display_subtask.jsp</result>
+		</action>
+		<action name="addSubtaskBtn"
+			class="com.techlab.action.AddSubtaskAction">
+			<interceptor-ref name="task"></interceptor-ref>
+			<result name="login" type="chain">login</result>
+			<result name="success">view/add_subtask.jsp</result>
+		</action>
+		<action name="addSubtask"
+			class="com.techlab.action.AddSubtaskAction" method="addSubtaskDo">
+			<interceptor-ref name="task"></interceptor-ref>
+			<result name="input">view/add_subtask.jsp</result>
+			<result name="login" type="chain">login</result>
+			<result name="success" type="chain">showSubtask</result>
+		</action>
+		<action name="editSubtaskBtn"
+			class="com.techlab.action.EditSubtaskAction">
+			<interceptor-ref name="task"></interceptor-ref>
+			<result name="login" type="chain">login</result>
+			<result name="success">view/edit_subtask.jsp</result>
+		</action>
+		<action name="editSubtask"
+			class="com.techlab.action.EditSubtaskAction" method="editSubtaskDo">
+			<interceptor-ref name="task"></interceptor-ref>
+			<result name="input">view/edit_subtask.jsp</result>
+			<result name="success" type="redirect">showSubtask</result>
+		</action>
+		<action name="deleteSubtaskBtn"
+			class="com.techlab.action.DeleteSubtaskAction">
+			<interceptor-ref name="task"></interceptor-ref>
+			<result name="login" type="chain">login</result>
+			<result name="success" type="chain">showSubtask</result>
 		</action>
 	</package>
 </struts>

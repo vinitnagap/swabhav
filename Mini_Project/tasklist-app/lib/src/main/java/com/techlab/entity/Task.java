@@ -38,7 +38,7 @@ public class Task {
 	private User user;
 
 	@OneToMany(mappedBy = "task", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<SubTask> subTask = new HashSet<SubTask>();
+	private Set<Subtask> subTask = new HashSet<Subtask>();
 
 	public User getUser() {
 		return user;
@@ -48,11 +48,11 @@ public class Task {
 		this.user = user;
 	}
 
-	public Set<SubTask> getSubTask() {
+	public Set<Subtask> getSubTask() {
 		return subTask;
 	}
 
-	public void setSubTask(Set<SubTask> subTask) {
+	public void setSubTask(Set<Subtask> subTask) {
 		this.subTask = subTask;
 	}
 

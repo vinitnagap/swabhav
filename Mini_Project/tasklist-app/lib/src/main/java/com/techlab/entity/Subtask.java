@@ -8,17 +8,29 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class SubTask {
+public class Subtask {
 
 	@Id
 	private String id;
 	private String title;
 	private String date;
 	private boolean done;
-
 	@ManyToOne
 	@JoinColumn
 	private Task task;
+
+	public Subtask() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Subtask(String id, String title, String date, boolean done, Task task) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.date = date;
+		this.done = done;
+		this.task = task;
+	}
 
 	public Task getTask() {
 		return task;

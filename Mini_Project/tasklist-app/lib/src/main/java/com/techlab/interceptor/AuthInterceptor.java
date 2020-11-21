@@ -1,7 +1,6 @@
 package com.techlab.interceptor;
 
-import java.util.Map;
-
+import org.apache.struts2.dispatcher.SessionMap;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionInvocation;
@@ -22,7 +21,8 @@ public class AuthInterceptor implements Interceptor {
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		// TODO Auto-generated method stub
-		Map<String, Object> sessionAttributes = invocation.getInvocationContext().getSession();
+		SessionMap<String, Object> sessionAttributes = (SessionMap<String, Object>) invocation.getInvocationContext()
+				.getSession();
 		ValueStack stack = invocation.getStack();
 		String id = stack.findString("id");
 		if (id != null) {
@@ -39,7 +39,7 @@ public class AuthInterceptor implements Interceptor {
 			return "login";
 		} else {
 			if (!((String) sessionAttributes.get("loginId")).equals(null)) {
-				System.out.println("Inside Interceptor" + sessionAttributes.get("user"));
+				System.out.println("Inside Interceptor" + sessionAttributes.get("task"));
 
 				return invocation.invoke();
 			} else {

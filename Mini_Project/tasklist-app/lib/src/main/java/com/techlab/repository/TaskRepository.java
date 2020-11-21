@@ -31,6 +31,7 @@ public class TaskRepository {
 		return tasks;
 	}
 
+	@SuppressWarnings("unchecked")
 	public Task getTask(String id) {
 		for (Task task : (List<Task>) fact.getCurrentSession().createQuery("from Task").list()) {
 			if (task.getId().equals(id)) {
@@ -42,6 +43,7 @@ public class TaskRepository {
 
 	public void addTask(String title, User user) {
 		Task task = new Task(UUID.randomUUID().toString(), title, getCurrentDateTime(), false, user);
+		fact.getCurrentSession().save(task);
 	}
 
 	public void editTask(String id, String title) {
