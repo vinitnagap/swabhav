@@ -33,7 +33,7 @@ public class AddSubtaskAction extends ActionSupport implements ModelDriven<AddTa
 
 	public void validateAddSubtaskDo() {
 		if (vm.getTitle().equals("")) {
-			addFieldError("title", "Enter Title");
+			addFieldError("title", "*Enter Title");
 		}
 	}
 

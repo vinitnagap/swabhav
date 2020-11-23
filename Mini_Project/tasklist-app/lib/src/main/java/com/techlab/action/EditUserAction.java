@@ -28,19 +28,19 @@ public class EditUserAction extends ActionSupport implements ModelDriven<EditUse
 
 	public void validateDoEditUser() {
 		if (vm.getFirstname().equals("")) {
-			addFieldError("firstname", "Enter First Name");
+			addFieldError("firstname", "*Enter First Name");
 		}
 		if (vm.getLastname().equals("")) {
-			addFieldError("lastname", "Enter Last Name");
+			addFieldError("lastname", "*Enter Last Name");
 		}
 		if (vm.getUsername().equals("")) {
-			addFieldError("username", "Enter Username");
+			addFieldError("username", "*Enter Username");
 		}
 		if (vm.getEmailid().equals("")) {
-			addFieldError("emailid", "Enter Email-id");
+			addFieldError("emailid", "*Enter Email-id");
 		}
 		if (vm.getPassword().equals("")) {
-			addFieldError("password", "Enter Password");
+			addFieldError("password", "*Enter Password");
 		}
 	}
 

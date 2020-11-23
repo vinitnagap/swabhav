@@ -38,7 +38,7 @@ public class AddTaskAction extends ActionSupport implements ModelDriven<AddTaskV
 
 	public void validateAddTaskDo() {
 		if (vm.getTitle().equals("")) {
-			addFieldError("title", "Enter Title");
+			addFieldError("title", "*Enter Title");
 		}
 	}
 

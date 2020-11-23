@@ -53,6 +53,7 @@ body {
 				<th scope="col">Checked</th>
 				<th scope="col">Title</th>
 				<th scope="col">Date</th>
+				<th scope="col">Subtask Count</th>
 				<th scope="col">Subtask</th>
 				<th scope="col">Edit</th>
 				<th scope="col">Delete</th>
@@ -65,6 +66,7 @@ body {
 						class="strikethrough" value="1"></td>
 					<td scope="row"><s:property value="title" /></td>
 					<td scope="row"><s:property value="date" /></td>
+					<td><s:property value="%{subTask.size}" /></td>
 					<td scope="row"><s:form action="showSubtask">
 							<s:hidden name="id" value="%{id}"></s:hidden>
 							<s:submit value="Subtask" class="btn btn-success"></s:submit>

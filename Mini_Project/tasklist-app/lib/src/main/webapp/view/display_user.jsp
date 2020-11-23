@@ -52,6 +52,7 @@ body {
 				<th scope="col">Username</th>
 				<th scope="col">Email-id</th>
 				<th scope="col">Password</th>
+				<th scope="col">Task Count</th>
 				<th scope="col">Task</th>
 				<th scope="col">Edit</th>
 				<th scope="col">Delete</th>
@@ -66,9 +67,11 @@ body {
 					<td scope="row"><s:property value="username" /></td>
 					<td scope="row"><s:property value="email" /></td>
 					<td scope="row"><s:property value="password" /></td>
+					<td><s:property value="%{task.size}" /></td>
 					<td scope="row"><s:form action="showtask">
 							<s:hidden name="id" value="%{id}"></s:hidden>
-							<s:submit value="Task" class="btn btn-success"></s:submit>
+
+							<s:submit value="Show Task" class="btn btn-success"></s:submit>
 						</s:form></td>
 					<td scope="row"><s:form action="editUserBtn">
 							<s:hidden name="id" value="%{id}"></s:hidden>

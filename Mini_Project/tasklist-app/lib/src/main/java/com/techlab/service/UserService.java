@@ -25,6 +25,10 @@ public class UserService {
 		return repository.getUsers();
 	}
 
+	public User getUserByUsername(String username) {
+		return repository.getUserByUsername(username);
+	}
+
 	public User getUser(String id) {
 		return repository.getUser(id);
 	}
@@ -36,4 +40,5 @@ public class UserService {
 	public void deleteUser(String id) {
 		repository.deleteUser(id);
 	}
+
 }

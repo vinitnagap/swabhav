@@ -17,6 +17,8 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserViewMo
 	private UserService service;
 	private UserViewModel vm;
 	private SessionMap<String, Object> map;
+	private boolean admin;
+	private String msg;
 
 	public UserViewModel getVm() {
 		return vm;
@@ -28,6 +30,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserViewMo
 
 	@Override
 	public void validate() {
+		System.out.println(vm.getUsername() + " " + vm.getPassword());
 		if (vm.getUsername().equals("")) {
 			addFieldError("username", "*Enter Username");
 		}
@@ -39,15 +42,22 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserViewMo
 	@Override
 	public String execute() {
 		if (service.validate(vm.getUsername(), vm.getPassword())) {
+			System.out.println(admin);
+			if (admin) {
+				// System.out.println(admin);
+				map.put("admin", vm.getUsername());
+			}
 			map.put("loginId", vm.getUsername());
 			return "success";
 		} else
-			return "error";
+			this.msg = "*Enter Valid Username & Password";
+		return "input";
 	}
 
 	@SkipValidation
 	public String logout() {
 		map.remove("loginId");
+		map.remove("admin");
 		return "success";
 	}
 
@@ -71,6 +81,22 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserViewMo
 
 	public void setMap(SessionMap<String, Object> map) {
 		this.map = map;
+	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 
 }

@@ -20,7 +20,7 @@ public class User {
 	private String username;
 	private String password;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<Task> task = new HashSet<Task>();
 
 	public Set<Task> getTask() {

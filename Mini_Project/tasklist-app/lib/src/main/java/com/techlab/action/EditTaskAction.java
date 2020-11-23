@@ -27,7 +27,7 @@ public class EditTaskAction extends ActionSupport implements ModelDriven<EditTas
 
 	public void validateEditTaskDo() {
 		if (vm.getTitle().equals("")) {
-			addFieldError("title", "Enter Title");
+			addFieldError("title", "*Enter Title");
 		}
 	}
 

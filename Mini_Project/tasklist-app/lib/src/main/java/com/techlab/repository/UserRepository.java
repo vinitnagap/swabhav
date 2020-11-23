@@ -43,6 +43,15 @@ public class UserRepository {
 		return null;
 	}
 
+	public User getUserByUsername(String username) {
+		for (User user : getUsers()) {
+			if (user.getUsername().equals(username)) {
+				return user;
+			}
+		}
+		return null;
+	}
+
 	public void editUser(String id, String fname, String lname, String email, String username, String password) {
 		User user = getUser(id);
 		user.setFirstName(fname);
@@ -58,13 +67,16 @@ public class UserRepository {
 	}
 
 	public boolean validate(String username, String password) {
-		List<User> users = new ArrayList<User>();
-		users = fact.getCurrentSession().createQuery("from User").list();
-		for (User user : users) {
+		// List<User> users = new ArrayList<User>();
+		// users = fact.getCurrentSession().createQuery("from User").list();
+		// System.out.println(users);
+		for (User user : getUsers()) {
+			System.out.println(user.getUsername());
 			if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
 				return true;
 			}
 		}
 		return false;
 	}
+
 }

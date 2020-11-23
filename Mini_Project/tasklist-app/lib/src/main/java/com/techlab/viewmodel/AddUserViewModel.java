@@ -7,6 +7,7 @@ public class AddUserViewModel {
 	private String emailid;
 	private String password;
 	private String confirmPassword;
+	private String captchaCode;
 
 	public String getFirstname() {
 		return firstname;
@@ -54,6 +55,14 @@ public class AddUserViewModel {
 
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+
+	public String getCaptchaCode() {
+		return captchaCode;
+	}
+
+	public void setCaptchaCode(String captchaCode) {
+		this.captchaCode = captchaCode;
 	}
 
 }

@@ -14,27 +14,32 @@
 .errorMessage {
 	color: red;
 }
-	.login-form {
-		width: 340px;
-    	margin: 50px auto;
-	}
-    .login-form form {
-    	margin-bottom: 15px;
-        background: #f7f7f7;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        padding: 30px;
-    }
-    .login-form h2 {
-        margin: 0 0 15px;
-    }
-    .form-control, .btn {
-        min-height: 38px;
-        border-radius: 2px;
-    }
-    .btn {        
-        font-size: 15px;
-        font-weight: bold;
-    }
+
+.login-form {
+	width: 340px;
+	margin: 50px auto;
+}
+
+.login-form form {
+	margin-bottom: 15px;
+	background: #f7f7f7;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	padding: 30px;
+}
+
+.login-form h2 {
+	margin: 0 0 15px;
+}
+
+.form-control, .btn {
+	min-height: 38px;
+	border-radius: 2px;
+}
+
+.btn {
+	font-size: 15px;
+	font-weight: bold;
+}
 </style>
 <meta charset="ISO-8859-1">
 <title>Login</title>
@@ -53,11 +58,18 @@
 					placeholder="Password"></s:textfield>
 				<br>
 			</div>
+			<div>
+				<s:checkbox name="admin" value="%{admin}" label="isAdmin?"></s:checkbox>
+			</div>
 			<div class="form-group">
 				<s:submit value="Login" class="btn btn-primary btn-block"></s:submit>
 			</div>
+			<a style="color: red"> <s:property value="msg" />
+			</a>
 		</form>
-		<p class="text-center"><a href="register">Create an Account</a></p>
+		<p class="text-center">
+			<a href="register">Create an Account</a>
+		</p>
 	</div>
 </body>
 </html>
