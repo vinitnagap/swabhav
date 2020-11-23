@@ -36,6 +36,9 @@ public class AddUserAction extends ActionSupport implements ModelDriven<AddUserV
 		if (vm.getPassword().equals("")) {
 			addFieldError("password", "Enter Password");
 		}
+		if (!vm.getPassword().equals(vm.getConfirmPassword())) {
+			addFieldError("confirmPassword", "Enter Correct Password");
+		}
 
 	}
 

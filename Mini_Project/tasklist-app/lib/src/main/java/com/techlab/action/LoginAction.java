@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -28,10 +29,10 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserViewMo
 	@Override
 	public void validate() {
 		if (vm.getUsername().equals("")) {
-			addFieldError("username", "Enter Username");
+			addFieldError("username", "*Enter Username");
 		}
 		if (vm.getPassword().equals("")) {
-			addFieldError("password", "Enter Password");
+			addFieldError("password", "*Enter Password");
 		}
 	}
 
@@ -42,6 +43,12 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserViewMo
 			return "success";
 		} else
 			return "error";
+	}
+
+	@SkipValidation
+	public String logout() {
+		map.remove("loginId");
+		return "success";
 	}
 
 	@Override
