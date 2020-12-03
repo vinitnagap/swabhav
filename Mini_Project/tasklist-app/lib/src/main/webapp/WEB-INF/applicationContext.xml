@@ -21,7 +21,7 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/hibernate_demo" />
+			value="jdbc:mysql://localhost:3306/tasklist" />
 		<property name="username" value="root" />
 		<property name="password" value="root" />
 	</bean>

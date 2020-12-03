@@ -5,8 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import org.junit.Test;
-
 import com.techlabs.model.Branch;
 import com.techlabs.model.Student;
 

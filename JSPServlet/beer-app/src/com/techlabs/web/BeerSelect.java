@@ -1,11 +1,13 @@
 package com.techlabs.web;
 
-import com.techlabs.model.*;
+import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import java.io.*;
-import java.util.*;
+
+import com.techlabs.model.BeerExpert;
 
 @WebServlet("/SelectBeer.do")
 public class BeerSelect extends HttpServlet {
